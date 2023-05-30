@@ -1,0 +1,6 @@
+setup.py
+ManimExtra/__init__.py
+ManimExtra.egg-info/PKG-INFO
+ManimExtra.egg-info/SOURCES.txt
+ManimExtra.egg-info/dependency_links.txt
+ManimExtra.egg-info/top_level.txt

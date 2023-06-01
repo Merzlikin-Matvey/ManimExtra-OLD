@@ -32,3 +32,13 @@ def Angle_bisector(A: Dot, B: Dot, C: Dot, length=1, color=WHITE, adapt=True):
     I = Dot(B.get_center()+np.array([delta_x,delta_y,0]))
     bisector = Line(B.get_center(),I.get_center(),color=color)
     return bisector
+
+def Triangle_bisector(A: Dot, B: Dot, C: Dot):
+    a = Line(B.get_center(), C.get_center()).get_length()
+    b = Line(A.get_center(), C.get_center())
+    c = Line(B.get_center(), A.get_center()).get_length()
+    x = (a*b.get_length())/(a+c)
+    I = Dot(b.point_from_proportion(1-x/b.get_length()))
+    return Line(A.get_center(),I.get_center())
+
+

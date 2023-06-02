@@ -1,5 +1,5 @@
 from manim import *
-import numpy as np
+
 
 def Angle_from_three_points(A: Dot, B: Dot, C: Dot, radius=0.3, color=WHITE, adapt=True):
     angle = Angle(
@@ -33,20 +33,3 @@ def Angle_bisector(A: Dot, B: Dot, C: Dot, length=1, color=WHITE, adapt=True):
     bisector = Line(B.get_center(),I.get_center(),color=color)
     return bisector
 
-def Triangle_bisector(A: Dot, B: Dot, C: Dot):
-    a = Line(B.get_center(), C.get_center()).get_length()
-    b = Line(A.get_center(), C.get_center())
-    c = Line(B.get_center(), A.get_center()).get_length()
-    x = (a*b.get_length())/(a+c)
-    I = Dot(b.point_from_proportion(1-x/b.get_length()))
-    return Line(A.get_center(),I.get_center())
-
-def Triangle_median(A: Dot, B: Dot, C: Dot):
-    b = Line(A.get_center(),C.get_center())
-    M = Dot(b.point_from_proportion(0.5))
-    return Line(B.get_center(),M.get_center())
-
-def Triangle_height(A: Dot, B: Dot, C: Dot):
-    b = Line(A.get_center(),C.get_center())
-    H = Dot(b.get_projection(B.get_center()))
-    return Line(B.get_center(),H.get_center())

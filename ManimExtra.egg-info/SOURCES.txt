@@ -7,3 +7,4 @@ ManimExtra.egg-info/top_level.txt
 ManimExtra/geometry/__init__.py
 ManimExtra/geometry/angle.py
 ManimExtra/geometry/chevians.py
+ManimExtra/geometry/circles.py

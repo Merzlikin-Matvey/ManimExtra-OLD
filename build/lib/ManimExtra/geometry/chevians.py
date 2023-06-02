@@ -1,6 +1,5 @@
 from manim import *
 
-
 def Triangle_chevian(A: Dot, B: Dot, C: Dot, alpha=0.375):
     b = Line(A.get_center(),C.get_center())
     X = Dot(b.point_from_proportion(alpha))

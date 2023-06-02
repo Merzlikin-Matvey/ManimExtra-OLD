@@ -23,3 +23,14 @@ def Circumscribed_circle(A: Dot, B: Dot, C: Dot):
 
 def Circumscribed_circle_centre(A: Dot, B: Dot, C: Dot):
     return Dot(Circumscribed_circle(A,B,C).get_center())
+
+def Eulers_circle(A: Dot, B: Dot, C: Dot):
+    a = Line(B.get_center(), C.get_center())
+    b = Line(A.get_center(), C.get_center())
+    c = Line(A.get_center(), B.get_center())
+
+    Ma = Dot(a.point_from_proportion(0.5))
+    Mb = Dot(b.point_from_proportion(0.5))
+    Mc = Dot(c.point_from_proportion(0.5))
+
+    return Circle().from_three_points(Ma.get_center(), Mb.get_center(), Mc.get_center())

@@ -17,3 +17,9 @@ def Incircle(A: Dot, B: Dot, C: Dot):
     h = Triangle_height(A,I,C).get_length()
     circle = Circle(radius=h).move_to(I.get_center())
     return circle
+
+def Circumscribed_circle(A: Dot, B: Dot, C: Dot):
+    return Circle().from_three_points(A.get_center(), B.get_center(), C.get_center())
+
+def Circumscribed_circle_centre(A: Dot, B: Dot, C: Dot):
+    return Dot(Circumscribed_circle(A,B,C).get_center())

@@ -15,7 +15,12 @@ def Angle_from_three_points(A: Dot, B: Dot, C: Dot, radius=0.3, color=WHITE, ada
         )
     return angle
 
-def Angle_bisector(A: Dot, B: Dot, C: Dot, length=1, color=WHITE, adapt=True):
+def Angle_bisector(A: Dot, B: Dot, C: Dot, length=0, color=WHITE, adapt=True):
+    a = Line(B.get_center(), C.get_center()).get_length()
+    b = Line(A.get_center(), C.get_center()).get_length()
+    c = Line(B.get_center(), A.get_center()).get_length()
+    if length == 0:
+        length = (2*a*c)/(a+c) * np.cos(Angle_from_three_points(A,B,C).get_value()/2)
     if Angle_from_three_points(A,B,C,adapt=False).get_value() > PI:
         I = Dot(C.get_center()).rotate(
                 -Angle_from_three_points(A,B,C).get_value()/2,

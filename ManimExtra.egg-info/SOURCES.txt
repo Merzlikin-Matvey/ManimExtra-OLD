@@ -6,5 +6,7 @@ ManimExtra.egg-info/dependency_links.txt
 ManimExtra.egg-info/top_level.txt
 ManimExtra/geometry/__init__.py
 ManimExtra/geometry/angle.py
+ManimExtra/geometry/animations.py
 ManimExtra/geometry/chevians.py
 ManimExtra/geometry/circles.py
+ManimExtra/geometry/fractals.py

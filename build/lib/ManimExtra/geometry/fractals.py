@@ -22,3 +22,16 @@ def Koch_curve(n=4, length=7, stroke_width=5, color=WHITE):
     else:
         KC.move_to(ORIGIN)
     return KC
+
+def Sierpinski_triangle(n):
+    t1 = Triangle(color=BLUE, stroke_color=RED).shift(UP).set_opacity(1).set_stroke(opacity=0)
+    t2 = t1.copy().rotate(about_point=ORIGIN, angle=2 * PI / 3)
+    t3 = t1.copy().rotate(about_point=ORIGIN, angle=-2 * PI / 3)
+
+    v = VGroup(t1, t2, t3).scale(0.5).move_to(Triangle().get_center()).shift(UP)
+    for i in range(n-1):
+        v2 = v.copy().rotate(about_point=ORIGIN, angle=2 * PI / 3)
+        v3 = v.copy().rotate(about_point=ORIGIN, angle=-2 * PI / 3)
+        v = VGroup(v, v2, v3).scale(0.5).move_to(Triangle().get_center()).shift(UP)
+    v.scale(2).move_to(Triangle().get_center())
+    return v

@@ -8,6 +8,11 @@ def Fancy_label(text: Tex, mode='normal'):
     symbols = 0
     for i in range(0,len(s),2):
         symbols += len(s[i])
-    time = (symbols + len(s)/2)/6 / (2.71828**(0.4*modes.index(mode)-0.6))
+    time = ((symbols + len(s)/2)/11) / (2.71828**(0.4*modes.index(mode)-0.55)) + 0.2
     return AnimationGroup(Write(text.to_edge(UP)),run_time=time)
+
+def Glow(obj,color=RED_C):
+    return Indicate(obj,color=color,scale_factor=1)
+
+
 

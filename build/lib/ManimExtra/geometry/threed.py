@@ -1,5 +1,6 @@
-from manim import *
+from manimlib import *
 import numpy as np
+
 def cube_vertices(cube: Cube):
     square_1 = cube[0]
     square_2 = cube[1]

@@ -1,4 +1,4 @@
-from manim import *
+from manimlib import *
 from .angle import *
 
 def Triangle_chevian(A: Dot, B: Dot, C: Dot, alpha=0.375, color=WHITE,

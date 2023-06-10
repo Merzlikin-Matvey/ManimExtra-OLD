@@ -1,4 +1,4 @@
-from manim import *
+from manimlib import *
 from .chevians import Height
 
 def Incenter(A: Dot, B: Dot, C: Dot, radius, color=WHITE):

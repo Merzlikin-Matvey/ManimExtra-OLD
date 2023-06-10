@@ -1,4 +1,4 @@
-from manim import *
+from manimlib import *
 
 
 def Angle_from_three_points(A: Dot, B: Dot, C: Dot, radius=0.3, color=WHITE, adapt=True):

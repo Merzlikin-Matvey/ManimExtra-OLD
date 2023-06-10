@@ -1,10 +1,10 @@
-from manim import *
+from manimlib import *
 
 def Fancy_label(text: Tex, mode='normal'):
     mode = mode.lower()
     modes = ['vlow','low','normal','fast','vfast']
     if mode not in modes: mode='normal'
-    s = text.get_tex_string().split('$')
+    s = text.tex_string.split('$')
     symbols = 0
     for i in range(0,len(s),2):
         symbols += len(s[i])

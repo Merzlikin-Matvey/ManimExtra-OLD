@@ -1,7 +1,7 @@
 import pytest
 from colour import Color
 
-from manim import RED, MarkupText, Text, VGroup, VMobject
+from ManimExtra import RED, MarkupText, Text, VGroup, VMobject
 
 __module_test__ = "text"
 

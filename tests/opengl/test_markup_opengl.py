@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from manim import MarkupText
+from ManimExtra import MarkupText
 
 
 def test_good_markup(using_opengl_renderer):

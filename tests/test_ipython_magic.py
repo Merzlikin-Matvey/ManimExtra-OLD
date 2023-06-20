@@ -2,8 +2,8 @@ from __future__ import annotations
 
 import re
 
-from manim import tempconfig
-from manim.utils.ipython_magic import _generate_file_name
+from ManimExtra import tempconfig
+from ManimExtra.utils.ipython_magic import _generate_file_name
 
 
 def test_jupyter_file_naming():

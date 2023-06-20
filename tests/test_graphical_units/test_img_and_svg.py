@@ -1,7 +1,7 @@
 from __future__ import annotations
 
-from manim import *
-from manim.utils.testing.frames_comparison import frames_comparison
+from ManimExtra import *
+from ManimExtra.utils.testing.frames_comparison import frames_comparison
 
 from ..helpers.path_utils import get_svg_resource
 
@@ -152,7 +152,7 @@ def test_Penrose(scene):
 @frames_comparison
 def test_ManimLogo(scene):
     background_rect = Rectangle(color=WHITE, fill_opacity=1).scale(2)
-    manim_logo = SVGMobject(get_svg_resource("manim-logo-sidebar.svg"))
+    manim_logo = SVGMobject(get_svg_resource("ManimExtra-logo-sidebar.svg"))
     scene.add(background_rect, manim_logo)
     scene.wait()
 

@@ -1,4 +1,4 @@
-from manim.mobject.text.code_mobject import Code
+from ManimExtra.mobject.text.code_mobject import Code
 
 
 def test_code_indentation():

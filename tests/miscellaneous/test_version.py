@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import pkg_resources
 
-from manim import __name__, __version__
+from ManimExtra import __name__, __version__
 
 
 def test_version():

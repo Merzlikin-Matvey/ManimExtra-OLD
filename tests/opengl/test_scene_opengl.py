@@ -1,7 +1,7 @@
 from __future__ import annotations
 
-from manim import Scene, tempconfig
-from manim.mobject.opengl.opengl_mobject import OpenGLMobject
+from ManimExtra import Scene, tempconfig
+from ManimExtra.mobject.opengl.opengl_mobject import OpenGLMobject
 
 
 def test_scene_add_remove(using_opengl_renderer):

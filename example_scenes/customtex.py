@@ -1,4 +1,4 @@
-from manim import *
+from ManimExtra import *
 
 
 class TexTemplateFromCLI(Scene):

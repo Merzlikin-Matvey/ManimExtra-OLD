@@ -3,9 +3,9 @@ from __future__ import annotations
 import numpy as np
 import pytest
 
-from manim import Circle, Line, Square, VDict, VGroup
-from manim.mobject.opengl.opengl_mobject import OpenGLMobject
-from manim.mobject.opengl.opengl_vectorized_mobject import OpenGLVMobject
+from ManimExtra import Circle, Line, Square, VDict, VGroup
+from ManimExtra.mobject.opengl.opengl_mobject import OpenGLMobject
+from ManimExtra.mobject.opengl.opengl_vectorized_mobject import OpenGLVMobject
 
 
 def test_opengl_vmobject_point_from_propotion(using_opengl_renderer):

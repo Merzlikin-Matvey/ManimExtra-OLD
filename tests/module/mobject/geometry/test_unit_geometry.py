@@ -6,7 +6,7 @@ import numpy as np
 
 logger = logging.getLogger(__name__)
 
-from manim import BackgroundRectangle, Circle, Sector
+from ManimExtra import BackgroundRectangle, Circle, Sector
 
 
 def test_get_arc_center():

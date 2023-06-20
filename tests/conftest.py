@@ -5,7 +5,7 @@ from pathlib import Path
 
 import pytest
 
-from manim import config, tempconfig
+from ManimExtra import config, tempconfig
 
 
 def pytest_addoption(parser):
@@ -55,7 +55,7 @@ def python_version():
 
 @pytest.fixture
 def reset_cfg_file():
-    cfgfilepath = Path(__file__).parent / "test_cli" / "manim.cfg"
+    cfgfilepath = Path(__file__).parent / "test_cli" / "ManimExtra.cfg"
     original = cfgfilepath.read_text()
     yield
     cfgfilepath.write_text(original)

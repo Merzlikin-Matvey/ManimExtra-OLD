@@ -81,6 +81,12 @@ with dict-like syntax:
 
 .. code-block:: pycon
 
+   >>> from ManimExtra import *
+   >>> config.background_color = WHITE
+   >>> config["background_color"] = WHITE
+   >>> from ManimExtra import *
+   >>> config.background_color = WHITE
+   >>> config["background_color"] = WHITE
    >>> from manim import *
    >>> config.background_color = WHITE
    >>> config["background_color"] = WHITE

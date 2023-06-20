@@ -6,15 +6,15 @@ from textwrap import dedent
 
 from click.testing import CliRunner
 
-from manim import __version__, capture
-from manim.__main__ import main
+from ManimExtra import __version__, capture
+from ManimExtra.__main__ import main
 
 
 def test_manim_version():
     command = [
         sys.executable,
         "-m",
-        "manim",
+        "ManimExtra",
         "--version",
     ]
     out, err, exit_code = capture(command)
@@ -25,9 +25,9 @@ def test_manim_version():
 def test_manim_cfg_subcommand():
     command = ["cfg"]
     runner = CliRunner()
-    result = runner.invoke(main, command, prog_name="manim")
+    result = runner.invoke(main, command, prog_name="ManimExtra")
     expected_output = """\
-Usage: manim cfg [OPTIONS] COMMAND [ARGS]...
+Usage: ManimExtra cfg [OPTIONS] COMMAND [ARGS]...
 
   Manages Manim configuration files.
 
@@ -47,9 +47,9 @@ Made with <3 by Manim Community developers.
 def test_manim_plugins_subcommand():
     command = ["plugins"]
     runner = CliRunner()
-    result = runner.invoke(main, command, prog_name="manim")
+    result = runner.invoke(main, command, prog_name="ManimExtra")
     expected_output = """\
-Usage: manim plugins [OPTIONS]
+Usage: ManimExtra plugins [OPTIONS]
 
   Manages Manim plugins.
 
@@ -65,9 +65,9 @@ Made with <3 by Manim Community developers.
 def test_manim_init_subcommand():
     command = ["init"]
     runner = CliRunner()
-    result = runner.invoke(main, command, prog_name="manim")
+    result = runner.invoke(main, command, prog_name="ManimExtra")
     expected_output = """\
-Usage: manim init [OPTIONS] COMMAND [ARGS]...
+Usage: ManimExtra init [OPTIONS] COMMAND [ARGS]...
 
   Create a new project or insert a new scene.
 
@@ -87,10 +87,10 @@ def test_manim_init_project(tmp_path):
     command = ["init", "project", "--default", "testproject"]
     runner = CliRunner()
     with runner.isolated_filesystem(temp_dir=tmp_path) as tmp_dir:
-        result = runner.invoke(main, command, prog_name="manim", input="Default\n")
+        result = runner.invoke(main, command, prog_name="ManimExtra", input="Default\n")
         assert not result.exception
         assert (Path(tmp_dir) / "testproject/main.py").exists()
-        assert (Path(tmp_dir) / "testproject/manim.cfg").exists()
+        assert (Path(tmp_dir) / "testproject/ManimExtra.cfg").exists()
 
 
 def test_manim_init_scene(tmp_path):
@@ -99,14 +99,14 @@ def test_manim_init_scene(tmp_path):
     runner = CliRunner()
     with runner.isolated_filesystem(temp_dir=tmp_path) as tmp_dir:
         result = runner.invoke(
-            main, command_named, prog_name="manim", input="Default\n"
+            main, command_named, prog_name="ManimExtra", input="Default\n"
         )
         assert not result.exception
         assert (Path(tmp_dir) / "my_awesome_file.py").exists()
         file_content = (Path(tmp_dir) / "my_awesome_file.py").read_text()
         assert "NamedFileTestScene(Scene):" in file_content
         result = runner.invoke(
-            main, command_unnamed, prog_name="manim", input="Default\n"
+            main, command_unnamed, prog_name="ManimExtra", input="Default\n"
         )
         assert (Path(tmp_dir) / "main.py").exists()
         file_content = (Path(tmp_dir) / "main.py").read_text()
@@ -116,9 +116,9 @@ def test_manim_init_scene(tmp_path):
 def test_manim_new_command():
     command = ["new"]
     runner = CliRunner()
-    result = runner.invoke(main, command, prog_name="manim")
+    result = runner.invoke(main, command, prog_name="ManimExtra")
     expected_output = """\
-Usage: manim new [OPTIONS] COMMAND [ARGS]...
+Usage: ManimExtra new [OPTIONS] COMMAND [ARGS]...
 
   (DEPRECATED) Create a new project or insert a new scene.
 

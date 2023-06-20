@@ -8,7 +8,7 @@ from pathlib import Path
 
 import pytest
 
-from manim import capture
+from ManimExtra import capture
 
 plugin_pyproject_template = textwrap.dedent(
     """\
@@ -21,7 +21,7 @@ plugin_pyproject_template = textwrap.dedent(
     [tool.poetry.dependencies]
     python = "^3.7"
 
-    [tool.poetry.plugins."manim.plugins"]
+    [tool.poetry.plugins."ManimExtra.plugins"]
     "{plugin_name}" = "{plugin_entrypoint}"
 
     [build-system]
@@ -32,7 +32,7 @@ plugin_pyproject_template = textwrap.dedent(
 
 plugin_init_template = textwrap.dedent(
     """\
-    from manim import *
+    from ManimExtra import *
     {all_dec}
     class {class_name}(VMobject):
         def __init__(self):
@@ -64,7 +64,7 @@ def simple_scenes_path():
 
 
 def cfg_file_create(cfg_file_contents, path):
-    file_loc = (path / "manim.cfg").absolute()
+    file_loc = (path / "ManimExtra.cfg").absolute()
     file_loc.write_text(cfg_file_contents)
     return file_loc
 
@@ -86,7 +86,7 @@ def test_plugin_warning(tmp_path, python_version, simple_scenes_path):
     command = [
         python_version,
         "-m",
-        "manim",
+        "ManimExtra",
         "-ql",
         "--media_dir",
         str(cfg_file.parent),
@@ -164,7 +164,7 @@ def test_plugin_function_like(
     command = [
         python_version,
         "-m",
-        "manim",
+        "ManimExtra",
         "-ql",
         "--media_dir",
         str(cfg_file.parent),
@@ -189,7 +189,7 @@ def test_plugin_no_all(tmp_path, create_plugin, python_version):
     )
     test_class = textwrap.dedent(
         f"""\
-        from manim import *
+        from ManimExtra import *
         class NoAllTest(Scene):
             def construct(self):
                 assert "{plugin_name}" in globals()
@@ -209,7 +209,7 @@ def test_plugin_no_all(tmp_path, create_plugin, python_version):
     command = [
         python_version,
         "-m",
-        "manim",
+        "ManimExtra",
         "-ql",
         "--media_dir",
         str(cfg_file.parent),
@@ -242,7 +242,7 @@ def test_plugin_with_all(tmp_path, create_plugin, python_version, simple_scenes_
     command = [
         python_version,
         "-m",
-        "manim",
+        "ManimExtra",
         "-ql",
         "--media_dir",
         str(cfg_file.parent),

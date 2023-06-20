@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from manim import *
+from ManimExtra import *
 
 
 class SquareToCircle(Scene):

@@ -3,8 +3,8 @@ from __future__ import annotations
 import numpy as np
 import pytest
 
-from manim.utils.space_ops import *
-from manim.utils.space_ops import shoelace, shoelace_direction
+from ManimExtra.utils.space_ops import *
+from ManimExtra.utils.space_ops import shoelace, shoelace_direction
 
 
 def test_rotate_vector():

@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from colour import Color
 
-from manim import RED, DecimalNumber, Integer
+from ManimExtra import RED, DecimalNumber, Integer
 
 
 def test_font_size():

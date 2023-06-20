@@ -4,7 +4,7 @@ import logging
 
 import pytest
 
-from manim.utils.deprecation import deprecated, deprecated_params
+from ManimExtra.utils.deprecation import deprecated, deprecated_params
 
 
 def _get_caplog_record_msg(warn_caplog_manim):
@@ -14,7 +14,7 @@ def _get_caplog_record_msg(warn_caplog_manim):
 
 @pytest.fixture()
 def warn_caplog_manim(caplog):
-    caplog.set_level(logging.WARNING, logger="manim")
+    caplog.set_level(logging.WARNING, logger="ManimExtra")
     yield caplog
 
 

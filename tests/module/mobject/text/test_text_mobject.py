@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from colour import Color
 
-from manim.mobject.text.text_mobject import MarkupText, Text
+from ManimExtra.mobject.text.text_mobject import MarkupText, Text
 
 
 def test_font_size():

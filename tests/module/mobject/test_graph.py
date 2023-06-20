@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from manim import DiGraph, Graph, Scene, Text, tempconfig
+from ManimExtra import DiGraph, Graph, Scene, Text, tempconfig
 
 
 def test_graph_creation():

@@ -2,9 +2,9 @@ from __future__ import annotations
 
 import numpy as np
 
-from manim import RendererType, config
-from manim.constants import RIGHT
-from manim.mobject.geometry.polygram import Square
+from ManimExtra import RendererType, config
+from ManimExtra.constants import RIGHT
+from ManimExtra.mobject.geometry.polygram import Square
 
 
 def test_Data():

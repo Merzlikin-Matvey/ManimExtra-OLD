@@ -4,8 +4,8 @@ from unittest.mock import Mock
 
 import pytest
 
-from manim import *
-from manim import config
+from ManimExtra import *
+from ManimExtra import config
 
 from ..simple_scenes import (
     SceneForFrozenFrameTests,

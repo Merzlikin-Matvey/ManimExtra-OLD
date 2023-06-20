@@ -2,7 +2,7 @@ import sys
 
 import pytest
 
-from manim.utils.commands import capture
+from ManimExtra.utils.commands import capture
 
 
 @pytest.mark.slow
@@ -15,7 +15,7 @@ def test_unicode_partial_movie(tmpdir, simple_scenes_path):
     command = [
         sys.executable,
         "-m",
-        "manim",
+        "ManimExtra",
         "--media_dir",
         str(tmpdir / unicode_str),
         str(simple_scenes_path),

@@ -4,7 +4,7 @@ from unittest.mock import Mock, patch
 
 import pytest
 
-from manim import *
+from ManimExtra import *
 
 from ..assert_utils import assert_file_exists
 from .simple_scenes import *
@@ -57,7 +57,7 @@ def test_when_animation_is_cached(using_temp_config):
     # Check that the same partial movie files has been used (with he same hash).
     # As there might have been several hashes, a list is used.
     assert scene.renderer.file_writer.partial_movie_files in partial_movie_files
-    # Check that manim correctly skipped the animation.
+    # Check that ManimExtra correctly skipped the animation.
     scene.update_to_time.assert_called_once_with(1)
     # Check that the output video has been generated.
     assert_file_exists(config["output_file"])
@@ -67,7 +67,7 @@ def test_hash_logic_is_not_called_when_caching_is_disabled(
     using_temp_config,
     disabling_caching,
 ):
-    with patch("manim.renderer.cairo_renderer.get_hash_from_play_call") as mocked:
+    with patch("ManimExtra.renderer.cairo_renderer.get_hash_from_play_call") as mocked:
         scene = SquareToCircle()
         scene.render()
         mocked.assert_not_called()
@@ -75,10 +75,10 @@ def test_hash_logic_is_not_called_when_caching_is_disabled(
 
 
 def test_hash_logic_is_called_when_caching_is_enabled(using_temp_config):
-    from manim.renderer.cairo_renderer import get_hash_from_play_call
+    from ManimExtra.renderer.cairo_renderer import get_hash_from_play_call
 
     with patch(
-        "manim.renderer.cairo_renderer.get_hash_from_play_call",
+        "ManimExtra.renderer.cairo_renderer.get_hash_from_play_call",
         wraps=get_hash_from_play_call,
     ) as mocked:
         scene = SquareToCircle()

@@ -4,12 +4,12 @@ from pathlib import Path
 
 import pytest
 
-from manim import config, tempconfig
+from ManimExtra import config, tempconfig
 
 
 @pytest.fixture
 def manim_cfg_file():
-    return Path(__file__).parent / "manim.cfg"
+    return Path(__file__).parent / "ManimExtra.cfg"
 
 
 @pytest.fixture

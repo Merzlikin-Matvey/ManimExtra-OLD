@@ -10,7 +10,7 @@ query-filters:
     - exclude:
           id: py/missing-call-to-init
 paths:
-    - manim
+    - ManimExtra
 paths-ignore:
     - tests/
     - example_scenes/

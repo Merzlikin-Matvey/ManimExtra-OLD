@@ -10,7 +10,7 @@ import os
 import sys
 from pathlib import Path
 
-import manim
+import ManimExtra
 
 # -- Path setup --------------------------------------------------------------
 # If extensions (or modules to document with autodoc) are in another directory,
@@ -42,7 +42,7 @@ extensions = [
     "sphinx.ext.extlinks",
     "sphinx.ext.viewcode",
     "sphinxext.opengraph",
-    "manim.utils.docbuild.manim_directive",
+    "ManimExtra.utils.docbuild.manim_directive",
     "sphinx.ext.graphviz",
     "sphinx.ext.inheritance_diagram",
     "sphinxcontrib.programoutput",
@@ -103,8 +103,8 @@ html_theme_options = {
     "source_branch": "main",
     "source_directory": "docs/source/",
     "top_of_page_button": None,
-    "light_logo": "manim-logo-sidebar.svg",
-    "dark_logo": "manim-logo-sidebar-dark.svg",
+    "light_logo": "ManimExtra-logo-sidebar.svg",
+    "dark_logo": "ManimExtra-logo-sidebar-dark.svg",
     "light_css_variables": {
         "color-content-foreground": "#000000",
         "color-background-primary": "#ffffff",
@@ -130,7 +130,7 @@ html_theme_options = {
         "color-foreground-secondary": "#ffffffd9",
     },
 }
-html_title = f"Manim Community v{manim.__version__}"
+html_title = f"Manim Community v{ManimExtra.__version__}"
 
 # This specifies any additional css files that will override the theme's
 html_css_files = ["custom.css"]

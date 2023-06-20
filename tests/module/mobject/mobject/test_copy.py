@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from manim import BraceLabel, Mobject, config
+from ManimExtra import BraceLabel, Mobject, config
 
 
 def test_mobject_copy():

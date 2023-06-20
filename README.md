@@ -49,7 +49,7 @@ and follow the appropriate instructions for your operating system.
 Manim is an extremely versatile package. The following is an example `Scene` you can construct:
 
 ```python
-from manim import *
+from ManimExtra import *
 
 
 class SquareToCircle(Scene):
@@ -68,7 +68,7 @@ class SquareToCircle(Scene):
 In order to view the output of this scene, save the code in a file called `example.py`. Then, run the following in a terminal window:
 
 ```sh
-manim -p -ql example.py SquareToCircle
+ManimExtra -p -ql example.py SquareToCircle
 ```
 
 You should see your native video player program pop up and play a simple scene in which a square is transformed into a circle. You may find some more simple examples within this

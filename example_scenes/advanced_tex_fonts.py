@@ -1,4 +1,4 @@
-from manim import *
+from ManimExtra import *
 
 # French Cursive LaTeX font example from http://jf.burnol.free.fr/showcase.html
 
@@ -55,7 +55,7 @@ class TexFontTemplateLibrary(Scene):
 
     This scene will only render those Templates that do not cause a TeX
     compilation error on your system. Furthermore, some of the ones that do render,
-    may still render incorrectly. This is beyond the scope of manim.
+    may still render incorrectly. This is beyond the scope of ManimExtra.
     Feel free to experiment.
     """
 

@@ -3,12 +3,12 @@ from __future__ import annotations
 import numpy as np
 import pytest
 
-from manim.animation.creation import Uncreate
-from manim.mobject.geometry.arc import Dot
-from manim.mobject.geometry.line import Line
-from manim.mobject.geometry.polygram import Square
-from manim.mobject.mobject import override_animate
-from manim.mobject.types.vectorized_mobject import VGroup
+from ManimExtra.animation.creation import Uncreate
+from ManimExtra.mobject.geometry.arc import Dot
+from ManimExtra.mobject.geometry.line import Line
+from ManimExtra.mobject.geometry.polygram import Square
+from ManimExtra.mobject.mobject import override_animate
+from ManimExtra.mobject.types.vectorized_mobject import VGroup
 
 
 def test_simple_animate(using_opengl_renderer):

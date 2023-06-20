@@ -2,7 +2,7 @@ from __future__ import annotations
 
 import numpy as np
 
-from manim import RIGHT, Circle, Mobject
+from ManimExtra import RIGHT, Circle, Mobject
 
 
 def test_family():

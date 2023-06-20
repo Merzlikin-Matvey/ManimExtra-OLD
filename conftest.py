@@ -20,7 +20,7 @@ import moderngl
 import pytest
 from _pytest.doctest import DoctestItem
 
-from manim import config, tempconfig
+from ManimExtra import config, tempconfig
 
 
 @pytest.fixture(autouse=True)

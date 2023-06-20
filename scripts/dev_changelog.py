@@ -58,7 +58,7 @@ from git import Repo
 from github import Github
 from tqdm import tqdm
 
-from manim.constants import CONTEXT_SETTINGS, EPILOG
+from ManimExtra.constants import CONTEXT_SETTINGS, EPILOG
 
 this_repo = Repo(str(Path(__file__).resolve().parent.parent))
 
@@ -222,7 +222,7 @@ def main(token, prior, tag, additional, outfile):
     lst_release, cur_release = prior, tag
 
     github = Github(token)
-    github_repo = github.get_repo("ManimCommunity/manim")
+    github_repo = github.get_repo("ManimCommunity/ManimExtra")
 
     pr_nums = get_pr_nums(lst_release, cur_release)
     if additional:

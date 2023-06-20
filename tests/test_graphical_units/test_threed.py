@@ -1,7 +1,7 @@
 from __future__ import annotations
 
-from manim import *
-from manim.utils.testing.frames_comparison import frames_comparison
+from ManimExtra import *
+from ManimExtra.utils.testing.frames_comparison import frames_comparison
 
 __module_test__ = "threed"
 

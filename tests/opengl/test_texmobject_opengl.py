@@ -4,7 +4,7 @@ from pathlib import Path
 
 import pytest
 
-from manim import MathTex, SingleStringMathTex, Tex, config
+from ManimExtra import MathTex, SingleStringMathTex, Tex, config
 
 
 def test_MathTex(using_opengl_renderer):

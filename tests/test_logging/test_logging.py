@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from manim import capture
+from ManimExtra import capture
 
 from ..utils.logging_tester import *
 
@@ -16,7 +16,7 @@ def test_logging_to_file(tmp_path, python_version):
     command = [
         python_version,
         "-m",
-        "manim",
+        "ManimExtra",
         "-ql",
         "-v",
         "DEBUG",
@@ -36,7 +36,7 @@ def test_error_logging(tmp_path, python_version):
     command = [
         python_version,
         "-m",
-        "manim",
+        "ManimExtra",
         "-ql",
         "--media_dir",
         str(tmp_path),
@@ -56,7 +56,7 @@ def test_tex_error_logs(tmp_path, python_version):
     command = [
         python_version,
         "-m",
-        "manim",
+        "ManimExtra",
         "-ql",
         "--log_to_file",
         "-v",

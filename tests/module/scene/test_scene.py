@@ -4,8 +4,8 @@ import datetime
 
 import pytest
 
-from manim import Circle, FadeIn, Group, Mobject, Scene, Square, tempconfig
-from manim.animation.animation import Wait
+from ManimExtra import Circle, FadeIn, Group, Mobject, Scene, Square, tempconfig
+from ManimExtra.animation.animation import Wait
 
 
 def test_scene_add_remove():

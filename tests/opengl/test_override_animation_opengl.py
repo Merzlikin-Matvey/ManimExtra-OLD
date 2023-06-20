@@ -2,9 +2,9 @@ from __future__ import annotations
 
 import pytest
 
-from manim import Animation, override_animation
-from manim.mobject.opengl.opengl_mobject import OpenGLMobject
-from manim.utils.exceptions import MultiAnimationOverrideException
+from ManimExtra import Animation, override_animation
+from ManimExtra.mobject.opengl.opengl_mobject import OpenGLMobject
+from ManimExtra.utils.exceptions import MultiAnimationOverrideException
 
 
 class AnimationA1(Animation):
@@ -74,7 +74,7 @@ def test_opengl_mobject_inheritance():
 def test_arguments():
     a = OpenGLMobjectA()
     args = (1, "two", {"three": 3}, ["f", "o", "u", "r"])
-    kwargs = {"test": "manim", "keyword": 42, "arguments": []}
+    kwargs = {"test": "ManimExtra", "keyword": 42, "arguments": []}
     animA = AnimationX(a, *args, **kwargs)
 
     assert animA[0] == args

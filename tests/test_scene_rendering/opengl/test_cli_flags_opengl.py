@@ -7,9 +7,9 @@ import pytest
 from click.testing import CliRunner
 from PIL import Image
 
-from manim import capture, get_video_metadata
-from manim.__main__ import __version__, main
-from manim.utils.file_ops import add_version_before_extension
+from ManimExtra import capture, get_video_metadata
+from ManimExtra.__main__ import __version__, main
+from ManimExtra.utils.file_ops import add_version_before_extension
 from tests.utils.video_tester import video_comparison
 
 
@@ -23,7 +23,7 @@ def test_basic_scene_with_default_values(tmp_path, manim_cfg_file, simple_scenes
     command = [
         sys.executable,
         "-m",
-        "manim",
+        "ManimExtra",
         "--renderer",
         "opengl",
         "--write_to_movie",
@@ -54,7 +54,7 @@ def test_resolution_flag(tmp_path, manim_cfg_file, simple_scenes_path):
         command = [
             sys.executable,
             "-m",
-            "manim",
+            "ManimExtra",
             "--media_dir",
             str(tmp_path),
             "--resolution",
@@ -83,7 +83,7 @@ def test_basic_scene_l_flag(tmp_path, manim_cfg_file, simple_scenes_path):
     command = [
         sys.executable,
         "-m",
-        "manim",
+        "ManimExtra",
         "--renderer",
         "opengl",
         "-ql",
@@ -107,7 +107,7 @@ def test_n_flag(tmp_path, simple_scenes_path):
     command = [
         sys.executable,
         "-m",
-        "manim",
+        "ManimExtra",
         "-ql",
         "--renderer",
         "opengl",
@@ -128,7 +128,7 @@ def test_s_flag_no_animations(tmp_path, manim_cfg_file, simple_scenes_path):
     command = [
         sys.executable,
         "-m",
-        "manim",
+        "ManimExtra",
         "--renderer",
         "opengl",
         "-ql",
@@ -142,10 +142,10 @@ def test_s_flag_no_animations(tmp_path, manim_cfg_file, simple_scenes_path):
     assert exit_code == 0, err
 
     exists = (tmp_path / "videos").exists()
-    assert not exists, "running manim with -s flag rendered a video"
+    assert not exists, "running ManimExtra with -s flag rendered a video"
 
     is_empty = not any((tmp_path / "images" / "simple_scenes").iterdir())
-    assert not is_empty, "running manim with -s flag did not render an image"
+    assert not is_empty, "running ManimExtra with -s flag did not render an image"
 
 
 @pytest.mark.slow
@@ -154,7 +154,7 @@ def test_image_output_for_static_scene(tmp_path, manim_cfg_file, simple_scenes_p
     command = [
         sys.executable,
         "-m",
-        "manim",
+        "ManimExtra",
         "--renderer",
         "opengl",
         "-ql",
@@ -167,10 +167,10 @@ def test_image_output_for_static_scene(tmp_path, manim_cfg_file, simple_scenes_p
     assert exit_code == 0, err
 
     exists = (tmp_path / "videos").exists()
-    assert not exists, "running manim with static scene rendered a video"
+    assert not exists, "running ManimExtra with static scene rendered a video"
 
     is_empty = not any((tmp_path / "images" / "simple_scenes").iterdir())
-    assert not is_empty, "running manim without animations did not render an image"
+    assert not is_empty, "running ManimExtra without animations did not render an image"
 
 
 @pytest.mark.slow
@@ -182,7 +182,7 @@ def test_no_image_output_with_interactive_embed(
     command = [
         sys.executable,
         "-m",
-        "manim",
+        "ManimExtra",
         "--renderer",
         "opengl",
         "-ql",
@@ -195,12 +195,12 @@ def test_no_image_output_with_interactive_embed(
     assert exit_code == 0, err
 
     exists = (tmp_path / "videos").exists()
-    assert not exists, "running manim with static scene rendered a video"
+    assert not exists, "running ManimExtra with static scene rendered a video"
 
     is_empty = not any((tmp_path / "images" / "simple_scenes").iterdir())
     assert (
         is_empty
-    ), "running manim static scene with interactive embed rendered an image"
+    ), "running ManimExtra static scene with interactive embed rendered an image"
 
 
 @pytest.mark.slow
@@ -211,7 +211,7 @@ def test_no_default_image_output_with_non_static_scene(
     command = [
         sys.executable,
         "-m",
-        "manim",
+        "ManimExtra",
         "--renderer",
         "opengl",
         "-ql",
@@ -224,12 +224,12 @@ def test_no_default_image_output_with_non_static_scene(
     assert exit_code == 0, err
 
     exists = (tmp_path / "videos").exists()
-    assert not exists, "running manim with static scene rendered a video"
+    assert not exists, "running ManimExtra with static scene rendered a video"
 
     is_empty = not any((tmp_path / "images" / "simple_scenes").iterdir())
     assert (
         is_empty
-    ), "running manim static scene with interactive embed rendered an image"
+    ), "running ManimExtra static scene with interactive embed rendered an image"
 
 
 @pytest.mark.slow
@@ -240,7 +240,7 @@ def test_image_output_for_static_scene_with_write_to_movie(
     command = [
         sys.executable,
         "-m",
-        "manim",
+        "ManimExtra",
         "--write_to_movie",
         "--renderer",
         "opengl",
@@ -254,10 +254,10 @@ def test_image_output_for_static_scene_with_write_to_movie(
     assert exit_code == 0, err
 
     is_empty = not any((tmp_path / "videos").iterdir())
-    assert not is_empty, "running manim with static scene rendered a video"
+    assert not is_empty, "running ManimExtra with static scene rendered a video"
 
     is_empty = not any((tmp_path / "images" / "simple_scenes").iterdir())
-    assert not is_empty, "running manim without animations did not render an image"
+    assert not is_empty, "running ManimExtra without animations did not render an image"
 
 
 @pytest.mark.slow
@@ -266,7 +266,7 @@ def test_s_flag(tmp_path, manim_cfg_file, simple_scenes_path):
     command = [
         sys.executable,
         "-m",
-        "manim",
+        "ManimExtra",
         "--renderer",
         "opengl",
         "-ql",
@@ -280,10 +280,10 @@ def test_s_flag(tmp_path, manim_cfg_file, simple_scenes_path):
     assert exit_code == 0, err
 
     exists = (tmp_path / "videos").exists()
-    assert not exists, "running manim with -s flag rendered a video"
+    assert not exists, "running ManimExtra with -s flag rendered a video"
 
     is_empty = not any((tmp_path / "images" / "simple_scenes").iterdir())
-    assert not is_empty, "running manim with -s flag did not render an image"
+    assert not is_empty, "running ManimExtra with -s flag did not render an image"
 
 
 @pytest.mark.slow
@@ -292,7 +292,7 @@ def test_r_flag(tmp_path, manim_cfg_file, simple_scenes_path):
     command = [
         sys.executable,
         "-m",
-        "manim",
+        "ManimExtra",
         "--renderer",
         "opengl",
         "-ql",
@@ -308,7 +308,7 @@ def test_r_flag(tmp_path, manim_cfg_file, simple_scenes_path):
     assert exit_code == 0, err
 
     is_not_empty = any((tmp_path / "images").iterdir())
-    assert is_not_empty, "running manim with -s, -r flag did not render a file"
+    assert is_not_empty, "running ManimExtra with -s, -r flag did not render a file"
 
     filename = add_version_before_extension(
         tmp_path / "images" / "simple_scenes" / "SquareToCircle.png",
@@ -321,7 +321,7 @@ def test_a_flag(tmp_path, manim_cfg_file, infallible_scenes_path):
     command = [
         sys.executable,
         "-m",
-        "manim",
+        "ManimExtra",
         "--renderer",
         "opengl",
         "--write_to_movie",
@@ -337,21 +337,21 @@ def test_a_flag(tmp_path, manim_cfg_file, infallible_scenes_path):
     one_is_not_empty = (
         tmp_path / "videos" / "infallible_scenes" / "480p15" / "Wait1.mp4"
     ).is_file()
-    assert one_is_not_empty, "running manim with -a flag did not render the first scene"
+    assert one_is_not_empty, "running ManimExtra with -a flag did not render the first scene"
 
     two_is_not_empty = (
         tmp_path / "images" / "infallible_scenes" / f"Wait2_ManimCE_v{__version__}.png"
     ).is_file()
     assert (
         two_is_not_empty
-    ), "running manim with -a flag did not render an image, possible leak of the config dictionary"
+    ), "running ManimExtra with -a flag did not render an image, possible leak of the config dictionary"
 
     three_is_not_empty = (
         tmp_path / "videos" / "infallible_scenes" / "480p15" / "Wait3.mp4"
     ).is_file()
     assert (
         three_is_not_empty
-    ), "running manim with -a flag did not render the second scene"
+    ), "running ManimExtra with -a flag did not render the second scene"
 
 
 @pytest.mark.slow
@@ -360,7 +360,7 @@ def test_custom_folders(tmp_path, manim_cfg_file, simple_scenes_path):
     command = [
         sys.executable,
         "-m",
-        "manim",
+        "ManimExtra",
         "--renderer",
         "opengl",
         "-ql",
@@ -409,12 +409,12 @@ def test_dash_as_filename(tmp_path):
 
 @pytest.mark.slow
 def test_gif_format_output(tmp_path, manim_cfg_file, simple_scenes_path):
-    """Test only gif created with manim version in file name when --format gif is set"""
+    """Test only gif created with ManimExtra version in file name when --format gif is set"""
     scene_name = "SquareToCircle"
     command = [
         sys.executable,
         "-m",
-        "manim",
+        "ManimExtra",
         "--renderer",
         "opengl",
         "-ql",
@@ -443,12 +443,12 @@ def test_gif_format_output(tmp_path, manim_cfg_file, simple_scenes_path):
 
 @pytest.mark.slow
 def test_mp4_format_output(tmp_path, manim_cfg_file, simple_scenes_path):
-    """Test only mp4 created without manim version in file name when --format mp4 is set"""
+    """Test only mp4 created without ManimExtra version in file name when --format mp4 is set"""
     scene_name = "SquareToCircle"
     command = [
         sys.executable,
         "-m",
-        "manim",
+        "ManimExtra",
         "--renderer",
         "opengl",
         "-ql",
@@ -488,7 +488,7 @@ def test_videos_not_created_when_png_format_set(
     command = [
         sys.executable,
         "-m",
-        "manim",
+        "ManimExtra",
         "--renderer",
         "opengl",
         "-ql",
@@ -528,7 +528,7 @@ def test_images_are_created_when_png_format_set(
     command = [
         sys.executable,
         "-m",
-        "manim",
+        "ManimExtra",
         "--renderer",
         "opengl",
         "-ql",
@@ -557,7 +557,7 @@ def test_images_are_zero_padded_when_zero_pad_set(
     command = [
         sys.executable,
         "-m",
-        "manim",
+        "ManimExtra",
         "--renderer",
         "opengl",
         "-ql",
@@ -589,7 +589,7 @@ def test_webm_format_output(tmp_path, manim_cfg_file, simple_scenes_path):
     command = [
         sys.executable,
         "-m",
-        "manim",
+        "ManimExtra",
         "--renderer",
         "opengl",
         "-ql",
@@ -629,7 +629,7 @@ def test_default_format_output_for_transparent_flag(
     command = [
         sys.executable,
         "-m",
-        "manim",
+        "ManimExtra",
         "--renderer",
         "opengl",
         "-ql",
@@ -665,7 +665,7 @@ def test_mov_can_be_set_as_output_format(tmp_path, manim_cfg_file, simple_scenes
     command = [
         sys.executable,
         "-m",
-        "manim",
+        "ManimExtra",
         "--renderer",
         "opengl",
         "-ql",

@@ -5,9 +5,9 @@ import math
 import numpy as np
 import pytest
 
-from manim import LEFT, ORIGIN, PI, UR, Axes, Circle, ComplexPlane
-from manim import CoordinateSystem as CS
-from manim import NumberPlane, PolarPlane, ThreeDAxes, config, tempconfig
+from ManimExtra import LEFT, ORIGIN, PI, UR, Axes, Circle, ComplexPlane
+from ManimExtra import CoordinateSystem as CS
+from ManimExtra import NumberPlane, PolarPlane, ThreeDAxes, config, tempconfig
 
 
 def test_initial_config():

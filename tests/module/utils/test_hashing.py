@@ -5,8 +5,8 @@ from zlib import crc32
 
 import pytest
 
-import manim.utils.hashing as hashing
-from manim import Square
+import ManimExtra.utils.hashing as hashing
+from ManimExtra import Square
 
 ALREADY_PROCESSED_PLACEHOLDER = hashing._Memoizer.ALREADY_PROCESSED_PLACEHOLDER
 

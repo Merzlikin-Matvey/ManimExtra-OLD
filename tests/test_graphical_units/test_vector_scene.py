@@ -1,7 +1,7 @@
 from __future__ import annotations
 
-from manim.scene.vector_space_scene import VectorScene
-from manim.utils.testing.frames_comparison import frames_comparison
+from ManimExtra.scene.vector_space_scene import VectorScene
+from ManimExtra.utils.testing.frames_comparison import frames_comparison
 
 __module_test__ = "vector_scene"
 

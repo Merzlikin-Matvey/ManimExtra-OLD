@@ -33,7 +33,7 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
           path: dist/*.tar.gz
-          name: manim.tar.gz
+          name: ManimExtra.tar.gz
     - name: Install Dependency
       run: pip install requests
     - name: Get Upload URL
@@ -65,6 +65,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: dist/manim-${{ steps.create_release.outputs.tag_name }}.tar.gz
-          asset_name: manim-${{ steps.create_release.outputs.tag_name }}.tar.gz
+          asset_path: dist/ManimExtra-${{ steps.create_release.outputs.tag_name }}.tar.gz
+          asset_name: ManimExtra-${{ steps.create_release.outputs.tag_name }}.tar.gz
           asset_content_type: application/gzip

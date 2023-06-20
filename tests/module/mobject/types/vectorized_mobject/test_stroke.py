@@ -2,8 +2,8 @@ from __future__ import annotations
 
 from colour import Color
 
-import manim.utils.color as C
-from manim import VMobject
+import ManimExtra.utils.color as C
+from ManimExtra import VMobject
 
 
 def test_stroke_props_in_ctor():

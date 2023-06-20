@@ -1,10 +1,10 @@
 #!/usr/bin/env python
 
 
-from manim import *
+from ManimExtra import *
 
 # To watch one of these scenes, run the following:
-# python --quality m manim -p example_scenes.py SquareToCircle
+# python --quality m ManimExtra -p example_scenes.py SquareToCircle
 #
 # Use the flag --quality l for a faster rendering at a lower quality.
 # Use -s to skip to the end and just save the final frame

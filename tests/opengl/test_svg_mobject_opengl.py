@@ -2,7 +2,7 @@ from __future__ import annotations
 
 from colour import Color
 
-from manim import *
+from ManimExtra import *
 from tests.helpers.path_utils import get_svg_resource
 
 

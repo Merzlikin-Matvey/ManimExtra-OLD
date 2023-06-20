@@ -6,7 +6,7 @@ from functools import wraps
 from pathlib import Path
 from typing import Any
 
-from manim import get_video_metadata
+from ManimExtra import get_video_metadata
 
 from ..assert_utils import assert_shallow_dict_compare
 from ..helpers.video_utils import get_section_dir_layout, get_section_index
@@ -75,7 +75,7 @@ def video_comparison(
 
     .. warning::
         The directories, such as the movie dir or sections dir, are expected to abide by the default.
-        This requirement could be dropped if the manim config were to be accessible from ``wrapper`` like in ``frames_comparison.py``.
+        This requirement could be dropped if the ManimExtra config were to be accessible from ``wrapper`` like in ``frames_comparison.py``.
 
     Parameters
     ----------

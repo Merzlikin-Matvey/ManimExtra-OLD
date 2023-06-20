@@ -28,7 +28,7 @@ Paste your code here.
 
 
 ## Additional media files
-<!-- Paste in the files manim produced on rendering the code above. -->
+<!-- Paste in the files ManimExtra produced on rendering the code above. -->
 
 <details><summary>Images/GIFs</summary>
 
@@ -39,7 +39,7 @@ Paste your code here.
 
 ## Logs
 <details><summary>Terminal output</summary>
-<!-- Add "-v DEBUG" when calling manim to generate more detailed logs -->
+<!-- Add "-v DEBUG" when calling ManimExtra to generate more detailed logs -->
 
 ```
 PASTE HERE OR PROVIDE LINK TO https://pastebin.com/ OR SIMILAR

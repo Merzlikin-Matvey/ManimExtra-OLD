@@ -6,6 +6,7 @@ Modules
 .. autosummary::
     :toctree: ../reference
 
+    ~intersection
     ~arc
     ~boolean_ops
     ~line

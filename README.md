@@ -8,16 +8,6 @@ Manim is an animation engine for explanatory math videos. It's used to create pr
 
 > This repository is maintained by me and is not affiliated with Grant Sanderson, 3Blue1Brown or Manim Community. I wrote this version of Manim primarily for my own purposes. Most of the code was taken from the Manim Community repository
 
-
-## Table of Contents:
-
--  [Usage](#usage)
--  [Documentation](#documentation)
--  [Docker](#docker)
--  [Help with Manim](#help-with-manim)
--  [Contributing](#contributing)
--  [License](#license)
-
 ## Usage
 
 Manim is an extremely versatile package. The following is an example `Scene` you can construct:

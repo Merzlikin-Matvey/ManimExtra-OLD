@@ -51,6 +51,9 @@ Next, the video quality is set
 
 ```MyScene``` The name of the scene in this file
 
+## Documentation
+My version of MinimExtra largely repeats the original version of Manim from Manim Community. The documentation of their version can be read about the link: https://docs.manim.community/en/stable/#
+
 
 ## License
 

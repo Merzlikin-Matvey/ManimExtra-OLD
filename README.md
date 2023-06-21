@@ -43,9 +43,9 @@ The general usage of ManimExtra is as follows:
 ```ManimExtra``` The command calling ManimExtra
 
 Next, the video quality is set  
-```-qk``` 4k 60 fps  
-```-qh``` FullHD 60 fps     
-```-ql``` 480p 60 fps   
+```-qk``` 4k 60fps  
+```-qh``` FullHD 60fps     
+```-ql``` 480p 15fps   
 
 ```file.py``` The name of the file where the project is located
 

@@ -12,6 +12,10 @@ __all__ = [
     "DoubleArrow",
     "Angle",
     "RightAngle",
+    "Cevian",
+    "Bisector",
+    "Median",
+    "High"
 ]
 
 from typing import Any, Sequence
@@ -184,6 +188,13 @@ class Line(TipableVMobject):
 
     def set_length(self, length):
         return self.scale(length / self.get_length())
+
+    def set_length_about_point(self, dot, length):
+        A = dot+np.array([1.5,0,0])
+        line = Line(dot,A).rotate(about_point=dot,angle=self.get_angle())
+        return line
+
+
 
 
 class DashedLine(Line):
@@ -871,8 +882,8 @@ class Angle(VMobject, metaclass=ConvertToOpenGL):
 
     def __init__(
         self,
-        line1: Line,
-        line2: Line,
+        line1: Line = Line(UP,DOWN),
+        line2: Line = Line(LEFT,RIGHT),
         radius: float = None,
         quadrant: Sequence[int] = (1, 1),
         other_angle: bool = False,
@@ -967,6 +978,7 @@ class Angle(VMobject, metaclass=ConvertToOpenGL):
 
         self.set_points(angle_mobject.points)
 
+
     def get_lines(self) -> VGroup:
         """Get the lines forming an angle of the :class:`Angle` class.
 
@@ -1025,7 +1037,7 @@ class Angle(VMobject, metaclass=ConvertToOpenGL):
 
     @staticmethod
     def from_three_points(
-        A: np.ndarray, B: np.ndarray, C: np.ndarray, **kwargs
+        A: np.ndarray, B: np.ndarray, C: np.ndarray, normal=True, **kwargs
     ) -> Angle:
         """The angle between the lines AB and BC.
 
@@ -1039,6 +1051,9 @@ class Angle(VMobject, metaclass=ConvertToOpenGL):
             The vertex of the angle
         C
             The endpoint of the second angle leg
+        normal
+            if True, returns an angle less than 180 degrees, if False, then more
+
 
         **kwargs
             Further keyword arguments are passed to :class:`.Angle`
@@ -1061,7 +1076,10 @@ class Angle(VMobject, metaclass=ConvertToOpenGL):
                     red_angle = Angle.from_three_points(LEFT + UP, ORIGIN, RIGHT, radius=.8, quadrant=(-1,-1), color=RED, stroke_width=8, other_angle=True)
                     self.add(red_angle, sample_angle)
         """
-        return Angle(Line(B, A), Line(B, C), **kwargs)
+        angle = Angle(Line(B, A), Line(B, C), **kwargs)
+        if (angle.get_value() > PI and normal) or (angle.get_value() < PI and not normal):
+            angle = Angle(Line(B, C), Line(B, A), **kwargs)
+        return angle
 
 
 class RightAngle(Angle):
@@ -1103,3 +1121,43 @@ class RightAngle(Angle):
 
     def __init__(self, line1: Line, line2: Line, length: float | None = None, **kwargs):
         super().__init__(line1, line2, radius=length, elbow=True, **kwargs)
+
+
+class Cevian(Line):
+
+    """ A segment connecting the vertices of a triangle and a point on the opposite side
+
+    Parameters
+    ----------
+    A
+        The vertex of the triangle
+    B
+        The vertex from which the segment exits
+    C
+        The vertex of the triangle
+    alpha
+        The ratio in which a point divides the side of AC
+    """
+
+    def __init__(self, A = LEFT, B = RIGHT, C = UP, alpha = 0.5, **kwargs):
+        D = Dot(Line(A,C).point_from_proportion(alpha))
+        self.dot = D
+        super().__init__(B.get_center(),D.get_center(), **kwargs)
+
+
+class Median(Cevian):
+    def __init__(self, A = LEFT, B = RIGHT, C = UP, **kwargs):
+        super().__init__(A, B, C, 0.5, **kwargs)
+
+class Bisector(Cevian):
+    def __init__(self, A = LEFT, B = RIGHT, C = UP,  **kwargs):
+        alpha = ((Line(A,C).get_length()*Line(A,B).get_length())/(Line(B,C).get_length()+Line(A,B).get_length()))/Line(A,C).get_length()
+        super().__init__(A, B, C, alpha, **kwargs)
+
+class High(Cevian):
+
+    def __init__(self, A = LEFT, B = RIGHT, C = UP, length=None, **kwargs):
+        x = np.cos(Angle().from_three_points(B,A,C).get_value()) * Line(A,B).get_length()
+        super().__init__(A, B, C, x/Line(A,C).get_length(), **kwargs)
+
+

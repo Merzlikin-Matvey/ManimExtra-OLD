@@ -132,8 +132,7 @@ exclude_lines = ["pragma: no cover"]
 
 [tool.poetry.plugins]
 [tool.poetry.plugins."console_scripts"]
-"manim" = "manim.__main__:main"
-"manimce" = "manim.__main__:main"
+"ManimExtra" = "ManimExtra.__main__:main"
 
 [build-system]
 requires = ["setuptools","poetry-core>=1.0.0"]

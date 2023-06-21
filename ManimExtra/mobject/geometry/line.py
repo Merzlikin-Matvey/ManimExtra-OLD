@@ -190,9 +190,9 @@ class Line(TipableVMobject):
         return self.scale(length / self.get_length())
 
     def set_length_about_point(self, dot, length):
-        A = dot+np.array([1.5,0,0])
+        A = dot+np.array([length,0,0])
         line = Line(dot,A).rotate(about_point=dot,angle=self.get_angle())
-        return line
+        return self.put_start_and_end_on(line.get_start(),line.get_end())
 
 
 
@@ -1077,8 +1077,10 @@ class Angle(VMobject, metaclass=ConvertToOpenGL):
                     self.add(red_angle, sample_angle)
         """
         angle = Angle(Line(B, A), Line(B, C), **kwargs)
-        if (angle.get_value() > PI and normal) or (angle.get_value() < PI and not normal):
-            angle = Angle(Line(B, C), Line(B, A), **kwargs)
+        try:
+            if (angle.get_value() > PI and normal) or (angle.get_value() < PI and not normal):
+                angle = Angle(Line(B, C), Line(B, A), **kwargs)
+        except: pass
         return angle
 
 
@@ -1141,8 +1143,11 @@ class Cevian(Line):
 
     def __init__(self, A = LEFT, B = RIGHT, C = UP, alpha = 0.5, **kwargs):
         D = Dot(Line(A,C).point_from_proportion(alpha))
-        self.dot = D
-        super().__init__(B.get_center(),D.get_center(), **kwargs)
+        self.dot = D.get_center()
+        self.general_vertex = B.get_center()
+        self.extra_vertex_1 = A.get_center()
+        self.extra_vertex_2 = C.get_center()
+        super().__init__(B,D, **kwargs)
 
 
 class Median(Cevian):
@@ -1156,8 +1161,14 @@ class Bisector(Cevian):
 
 class High(Cevian):
 
-    def __init__(self, A = LEFT, B = RIGHT, C = UP, length=None, **kwargs):
+    def __init__(self, A = LEFT, B = RIGHT, C = UP, **kwargs):
         x = np.cos(Angle().from_three_points(B,A,C).get_value()) * Line(A,B).get_length()
         super().__init__(A, B, C, x/Line(A,C).get_length(), **kwargs)
+
+    def angles(self, **kwargs):
+        angle_1 = Angle().from_three_points(self.general_vertex, self.dot, self.extra_vertex_1,elbow=True,**kwargs)
+        angle_2 = Angle().from_three_points(self.general_vertex, self.dot, self.extra_vertex_2,elbow=True,**kwargs)
+        return VGroup(angle_1,angle_2)
+
 
 

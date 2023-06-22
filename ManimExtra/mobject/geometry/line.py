@@ -1141,7 +1141,7 @@ class Cevian(Line):
         The ratio in which a point divides the side of AC
     """
 
-    def __init__(self, A = LEFT, B = RIGHT, C = UP, alpha = 0.5, **kwargs):
+    def __init__(self, A: np.ndarray, B: np.ndarray, C: np.ndarray, alpha = 0.5, **kwargs):
         D = Dot(Line(A,C).point_from_proportion(alpha))
         self.dot = D.get_center()
         self.general_vertex = B.get_center()
@@ -1159,7 +1159,7 @@ class Bisector(Cevian):
         alpha = ((Line(A,C).get_length()*Line(A,B).get_length())/(Line(B,C).get_length()+Line(A,B).get_length()))/Line(A,C).get_length()
         super().__init__(A, B, C, alpha, **kwargs)
 
-class High(Cevian):
+class Altitude(Cevian):
 
     def __init__(self, A = LEFT, B = RIGHT, C = UP, **kwargs):
         x = np.cos(Angle().from_three_points(B,A,C).get_value()) * Line(A,B).get_length()

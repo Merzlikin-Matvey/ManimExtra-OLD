@@ -48,7 +48,7 @@ def intersection_circles(circle_1: Circle, circle_2: Circle):
     return VGroup(x1)
 
 def intersection_line_and_circle(line: Line, circle: Circle):
-    o, r = circle.get_center(), circle.radius
+    o, r = circle.get_center() , circle.radius
     h = Line(line.get_projection(o),o).get_length()
     if h > r: return VGroup()
     alpha = np.arccos(h/r)

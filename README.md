@@ -52,8 +52,23 @@ Next, the video quality is set
 ```MyScene``` The name of the scene in this file
 
 ## Documentation
-My version of MinimExtra largely repeats the original version of Manim from Manim Community. The documentation of their version can be read about the link: https://docs.manim.community/en/stable/#
+My version of MinimExtra largely repeats the original version of Manim from Manim Community. The documentation of their version can be read about the link: https://docs.manim.community/en/stable/#        
 
+A brief description of the functions that are added to my version of the project
+
+### Cevian(A, B, C - np.ndarray, alpha - float) -> Line
+> The segment connecting the vertex of the triangle _B_ and the point on the opposite side _AC_. This point divides the side into segments that relate to each other as _alpha_
+
+### Median(A, B, C - np.ndarray) -> Cevian 
+> The median of the triangle coming out of the vertex _B_
+
+### Bisector(A, B, C - np.ndarray) -> Cevian 
+> The bisector of the triangle coming out of the vertex _B_
+
+### Altitude(A, B, C - np.ndarray) -> Cevian 
+> The altitude of the triangle coming out of the vertex _B_
+
+### 
 
 ## License
 

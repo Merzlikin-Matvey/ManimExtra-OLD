@@ -56,7 +56,7 @@ My version of MinimExtra largely repeats the original version of Manim from Mani
 
 A brief description of the functions that are added to my version of the project
 
-
+***
 
 ### Cevian(A, B, C - np.ndarray, alpha - float) -> Line
 > The segment connecting the vertex of the triangle _B_ and the point on the opposite side _AC_. This point divides the side into segments that relate to each other as _alpha_
@@ -64,15 +64,15 @@ A brief description of the functions that are added to my version of the project
 
 ### Median(A, B, C - np.ndarray) -> Cevian 
 > The median of the triangle coming out of the vertex _B_
-
+***
 
 ### Bisector(A, B, C - np.ndarray) -> Cevian 
 > The bisector of the triangle coming out of the vertex _B_
-
+***
 
 ### Altitude(A, B, C - np.ndarray) -> Cevian 
 > The altitude of the triangle coming out of the vertex _B_
-
+***
 
 ### 
 

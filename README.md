@@ -73,14 +73,6 @@ A brief description of the functions that are added to my version of the project
 ### ```Altitude```(A, B, C - np.ndarray) -> Cevian
 > The altitude of the triangle coming out of the vertex _B_
 
-### ```InscribedCircle```(A, B, C - np.ndarray) -> Circle
-> The inscribed circle of the triangle ABC
-
-### ```CircumscribedCircle```(A, B, C - np.ndarray) -> Circle
-> The circumscribed circle of the triangle ABC
-
-### ```NinePointCircle```(A, B, C - np.ndarray) -> CircumscribedCircle
-> Euler circle of triangle ABC
 
 ### Example 
 ```python
@@ -105,6 +97,36 @@ class scene(Scene):
         
 
 ```
+
+### ```InscribedCircle```(A, B, C - np.ndarray) -> Circle
+> The inscribed circle of the triangle ABC
+
+### ```CircumscribedCircle```(A, B, C - np.ndarray) -> Circle
+> The circumscribed circle of the triangle ABC
+
+### ```NinePointCircle```(A, B, C - np.ndarray) -> CircumscribedCircle
+> Euler circle of triangle ABC
+
+```python
+from ManimExtra import * 
+
+class scene(Scene):
+    def construct(self):
+        A = Dot(DOWN+2*LEFT).set_z_index(10)
+        B = Dot(2*UP).set_z_index(10)
+        C = Dot(DOWN+3*RIGHT).set_z_index(10)
+
+        a = Line(B.get_center(),C.get_center(), color=BLUE)
+        b = Line(A.get_center(),C.get_center(), color=BLUE)
+        c = Line(B.get_center(),A.get_center(), color=BLUE)
+
+        self.add(A,B,C,a,b,c)
+        circle = InscribedCircle(A.get_center(),B.get_center(),C.get_center())
+        self.add(circle,Dot(circle.get_center()))
+
+        
+```
+
 
 ***
 ## Functions

@@ -226,6 +226,12 @@ QUALITIES: dict[str, dict[str, str | int | None]] = {
         "pixel_width": 854,
         "frame_rate": 15,
     },
+    "vlow_quality": {
+        "flag": "vl",
+        "pixel_height": 480,
+        "pixel_width": 854,
+        "frame_rate": 5,
+    },
     "example_quality": {
         "flag": None,
         "pixel_height": 480,
@@ -236,7 +242,7 @@ QUALITIES: dict[str, dict[str, str | int | None]] = {
 
 DEFAULT_QUALITY: str = "high_quality"
 
-EPILOG = "Made with <3 by Manim Community developers."
+EPILOG = "Made with <3 by Matvey Merzlikin"
 SHIFT_VALUE = 65505
 CTRL_VALUE = 65507
 

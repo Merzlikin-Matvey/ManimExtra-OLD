@@ -58,28 +58,52 @@ A brief description of the functions that are added to my version of the project
 
 ***
 ## Classes
-### ```Cevian(A, B, C - np.ndarray, alpha - float) -> Line```
+### ```Cevian```(A, B, C - np.ndarray, alpha - float) -> Line
 > The Line connecting the vertex of the triangle _B_ and the point on the opposite side _AC_. This point divides the side into segments that relate to each other as _alpha_
 
 
-### ```Median(A, B, C - np.ndarray) -> Cevian ```
+### ```Median```(A, B, C - np.ndarray) -> Cevian
 > The median of the triangle coming out of the vertex _B_
 
 
-### ```Bisector(A, B, C - np.ndarray) -> Cevian ```
+### ```Bisector```(A, B, C - np.ndarray) -> Cevian 
 > The bisector of the triangle coming out of the vertex _B_
 
 
-### ```Altitude(A, B, C - np.ndarray) -> Cevian ```
+### ```Altitude```(A, B, C - np.ndarray) -> Cevian
 > The altitude of the triangle coming out of the vertex _B_
+
+### Example 
+```python
+from ManimExtra import * 
+
+class scene(Scene):
+    def construct(self):
+        A = Dot(2*DOWN+3*LEFT).set_z_index(10)
+        B = Dot(2*UP).set_z_index(10)
+        C = Dot(2*DOWN+4*RIGHT).set_z_index(10)
+        self.add(A,B,C)
+        
+        a = Line(B.get_center(), C.get_center(), color = BLUE)
+        b = Line(A.get_center(), C.get_center(), color = BLUE)
+        c = Line(A.get_center(), B.get_center(), color = BLUE)
+
+        self.add(a,b,c)
+
+        cevian = Cevian(A.get_center(),B.get_center(),C.get_center(),0.3,color=RED)
+        self.add(cevian, Dot(cevian.dot))
+
+        
+
+```
 
 ***
 ## Functions
 
-### ```intersection_lines(line_1, line_2 - Line) -> Dot```
+### ```intersection_lines```(line_1, line_2 - Line) -> Dot
 > Returns their intersection Dot
 
-### ```intersection_circles(circle_1, circle_2 - Circle) -> VGroup(Dot)```
+### ```intersection_circles```(circle_1, circle_2 - Circle) -> VGroup(Dot)
 > Returns a VGroup of 2 Dots if they intersect, 1 point if they touch, an empty set otherwise
 
 ### 

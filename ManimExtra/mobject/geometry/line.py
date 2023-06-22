@@ -15,7 +15,7 @@ __all__ = [
     "Cevian",
     "Bisector",
     "Median",
-    "High"
+    "Altitude"
 ]
 
 from typing import Any, Sequence
@@ -1142,11 +1142,11 @@ class Cevian(Line):
     """
 
     def __init__(self, A: np.ndarray, B: np.ndarray, C: np.ndarray, alpha = 0.5, **kwargs):
-        D = Dot(Line(A,C).point_from_proportion(alpha))
-        self.dot = D.get_center()
-        self.general_vertex = B.get_center()
-        self.extra_vertex_1 = A.get_center()
-        self.extra_vertex_2 = C.get_center()
+        D = Line(A,C).point_from_proportion(alpha)
+        self.dot = D
+        self.general_vertex = B
+        self.extra_vertex_1 = A
+        self.extra_vertex_2 = C
         super().__init__(B,D, **kwargs)
 
 

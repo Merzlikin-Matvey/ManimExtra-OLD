@@ -7,7 +7,8 @@ from .line import Line, Angle
 
 __all__ = [
     "InscribedCircle",
-    "CircumscribedCircle"
+    "CircumscribedCircle",
+    "NinePointCircle",
 ]
 
 class InscribedCircle(Circle):

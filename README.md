@@ -58,28 +58,28 @@ A brief description of the functions that are added to my version of the project
 
 ***
 ## Classes
-### Cevian(A, B, C - np.ndarray, alpha - float) -> Line
+### ```Cevian(A, B, C - np.ndarray, alpha - float) -> Line```
 > The Line connecting the vertex of the triangle _B_ and the point on the opposite side _AC_. This point divides the side into segments that relate to each other as _alpha_
 
 
-### Median(A, B, C - np.ndarray) -> Cevian 
+### ```Median(A, B, C - np.ndarray) -> Cevian ```
 > The median of the triangle coming out of the vertex _B_
 
 
-### Bisector(A, B, C - np.ndarray) -> Cevian 
+### ```Bisector(A, B, C - np.ndarray) -> Cevian ```
 > The bisector of the triangle coming out of the vertex _B_
 
 
-### Altitude(A, B, C - np.ndarray) -> Cevian 
+### ```Altitude(A, B, C - np.ndarray) -> Cevian ```
 > The altitude of the triangle coming out of the vertex _B_
 
 ***
 ## Functions
 
-### intersection_lines(line_1, line_2 - Line) -> Dot
+### ```intersection_lines(line_1, line_2 - Line) -> Dot```
 > Returns their intersection Dot
 
-### intersection_circles(circle_1, circle_2 - Circle) -> VGroup(Dot)
+### ```intersection_circles(circle_1, circle_2 - Circle) -> VGroup(Dot)```
 > Returns a VGroup of 2 Dots if they intersect, 1 point if they touch, an empty set otherwise
 
 ### 

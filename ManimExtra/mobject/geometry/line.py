@@ -194,7 +194,8 @@ class Line(TipableVMobject):
         line = Line(dot,A).rotate(about_point=dot,angle=self.get_angle())
         return self.put_start_and_end_on(line.get_start(),line.get_end())
 
-
+    def get_distance(self, dot: np.ndarray):
+        return Line(dot,self.get_projection(dot)).get_length()
 
 
 class DashedLine(Line):
@@ -1082,6 +1083,7 @@ class Angle(VMobject, metaclass=ConvertToOpenGL):
                 angle = Angle(Line(B, C), Line(B, A), **kwargs)
         except: pass
         return angle
+
 
 
 class RightAngle(Angle):

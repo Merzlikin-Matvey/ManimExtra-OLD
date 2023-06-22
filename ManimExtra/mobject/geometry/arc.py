@@ -69,6 +69,7 @@ if TYPE_CHECKING:
     from ManimExtra.mobject.text.text_mobject import Text
 
 
+
 class TipableVMobject(VMobject, metaclass=ConvertToOpenGL):
     """Meant for shared functionality between Arc and Line.
     Functionality can be classified broadly into these groups:

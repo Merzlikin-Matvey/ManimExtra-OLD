@@ -45,6 +45,7 @@ from .camera.three_d_camera import *
 from .constants import *
 from .mobject.frame import *
 from .mobject.geometry.arc import *
+from .mobject.geometry.any_circles import *
 from .mobject.geometry.boolean_ops import *
 from .mobject.geometry.intersection import *
 from .mobject.geometry.line import *

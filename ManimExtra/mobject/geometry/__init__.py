@@ -6,6 +6,7 @@ Modules
 .. autosummary::
     :toctree: ../reference
 
+    ~any_circles
     ~intersection
     ~arc
     ~boolean_ops

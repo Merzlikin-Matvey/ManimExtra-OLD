@@ -73,6 +73,15 @@ A brief description of the functions that are added to my version of the project
 ### ```Altitude```(A, B, C - np.ndarray) -> Cevian
 > The altitude of the triangle coming out of the vertex _B_
 
+### ```InscribedCircle```(A, B, C - np.ndarray) -> Circle
+> The inscribed circle of the triangle ABC
+
+### ```CircumscribedCircle```(A, B, C - np.ndarray) -> Circle
+> The circumscribed circle of the triangle ABC
+
+### ```NinePointCircle```(A, B, C - np.ndarray) -> CircumscribedCircle
+> Euler circle of triangle ABC
+
 ### Example 
 ```python
 from ManimExtra import * 

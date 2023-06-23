@@ -1,4 +1,4 @@
-![Текст с описанием картинки](/logo/extra/photo_5237988281814208085_y.jpg?raw=true)
+![Текст с описанием картинки](https://github.com/Merzlikin-Matvey/ManimExtra/blob/ac7061ea80d792eb0e5141ed87fbeab63d9d34da/logo/extra/photo_5237988281814208085_y.jpg)
 
 Manim is an animation engine for explanatory math videos. It's used to create precise animations programmatically, as demonstrated in the videos of [3Blue1Brown](https://www.3blue1brown.com/).
 

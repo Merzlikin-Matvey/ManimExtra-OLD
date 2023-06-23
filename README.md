@@ -1,8 +1,5 @@
-<p align="center">
-    <a href="https://www.manim.community/"><img src="https://raw.githubusercontent.com/ManimCommunity/manim/main/logo/cropped.png"></a>
+![Текст с описанием картинки](/logo/extra/photo_5237988281814208085_y.jpg)
 
-</p>
-<hr />
 
 Manim is an animation engine for explanatory math videos. It's used to create precise animations programmatically, as demonstrated in the videos of [3Blue1Brown](https://www.3blue1brown.com/).
 

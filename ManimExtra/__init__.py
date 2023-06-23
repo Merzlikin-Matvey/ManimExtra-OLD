@@ -26,6 +26,7 @@ from .animation.changing import *
 from .animation.composition import *
 from .animation.creation import *
 from .animation.fading import *
+from .animation.fancy_label import *
 from .animation.growing import *
 from .animation.indication import *
 from .animation.movement import *

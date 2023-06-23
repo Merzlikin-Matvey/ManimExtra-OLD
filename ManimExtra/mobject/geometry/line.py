@@ -1168,8 +1168,8 @@ class Altitude(Cevian):
         super().__init__(A, B, C, x/Line(A,C).get_length(), **kwargs)
 
     def angles(self, **kwargs):
-        angle_1 = Angle().from_three_points(self.general_vertex, self.dot, self.extra_vertex_1,elbow=True,**kwargs)
-        angle_2 = Angle().from_three_points(self.general_vertex, self.dot, self.extra_vertex_2,elbow=True,**kwargs)
+        angle_1 = Angle().from_three_points(self.general_vertex, self.dot, self.extra_vertex_1,elbow=True,**kwargs).set_z_index(-9)
+        angle_2 = Angle().from_three_points(self.general_vertex, self.dot, self.extra_vertex_2,elbow=True,**kwargs).set_z_index(-9)
         return VGroup(angle_1,angle_2)
 
 

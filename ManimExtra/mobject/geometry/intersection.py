@@ -19,10 +19,10 @@ def intersection_lines(line_1: Line,line_2: Line):
     b2 = line_2.start[1] - k2 * line_2.start[0]
 
     if k1-k2 == 0:
-        return Dot(np.array(100000000,0,0))
+        return np.array(100000000,0,0)
     x = (b2-b1)/(k1-k2)
     y = k1*x+b1
-    return Dot(np.array([x,y,line_1.start[-1]]))
+    return np.array([x,y,line_1.start[-1]])
 
 
 

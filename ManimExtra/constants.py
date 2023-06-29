@@ -218,7 +218,7 @@ QUALITIES: dict[str, dict[str, str | int | None]] = {
         "flag": "m",
         "pixel_height": 720,
         "pixel_width": 1280,
-        "frame_rate": 30,
+        "frame_rate": 50,
     },
     "low_quality": {
         "flag": "l",

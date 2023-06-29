@@ -37,7 +37,7 @@ class NinePointCircle(CircumscribedCircle):
         M3 = Line(C, B).point_from_proportion(0.5)
         super().__init__(M1,M2,M3,**kwargs)
 
-class Incenter(В)
+
 
 class RadicalAxis(Line):
 

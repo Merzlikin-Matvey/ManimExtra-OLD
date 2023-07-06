@@ -197,6 +197,22 @@ class Line(TipableVMobject):
     def get_distance(self, dot: np.ndarray):
         return Line(dot,self.get_projection(dot)).get_length()
 
+    def equal(self, n=1, buff=0.05, length=0.2, **kwargs):
+        return VGroup(*[Line(**kwargs).set_length(length).rotate(
+            about_point=Line(**kwargs).set_length(length).get_center(), angle=PI/2)for i in range(n)]).arrange(
+            buff=0.1, direction=RIGHT).move_to(self.get_center()).rotate(about_point=self.get_center(),angle=self.get_angle()).set_z_index(1)
+
+
+    def paral(self, n=1, buff=0.08, length=0.15, rotate=False, **kwargs):
+        elem = VGroup(
+            Line(**kwargs).set_length(length).rotate(
+                about_point=Line().set_length(0.2).get_end(), angle=-1**(int(rotate)) * PI / 4).shift(0.02 * UR),
+            Line(**kwargs).set_length(length).rotate(
+                about_point=Line().set_length(0.2).get_end(), angle=-1**(int(not rotate)) *  / 4).shift(0.02 * DR),
+        )
+        return VGroup(*[elem.copy() for i in range(n)]).arrange(buff=buff, direction=RIGHT).move_to(
+        self.get_center()).rotate(about_point=self.get_center(), angle=self.get_angle()).set_z_index(1)
+
 
 class DashedLine(Line):
     """A dashed :class:`Line`.

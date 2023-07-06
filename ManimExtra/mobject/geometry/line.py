@@ -206,9 +206,9 @@ class Line(TipableVMobject):
     def paral(self, n=1, buff=0.08, length=0.15, rotate=False, **kwargs):
         elem = VGroup(
             Line(**kwargs).set_length(length).rotate(
-                about_point=Line().set_length(0.2).get_end(), angle=-1**(int(rotate)) * PI / 4).shift(0.02 * UR),
+                about_point=Line().set_length(0.2).get_end(), angle=pow(-1, int(rotate)) * PI / 4).shift(0.02 * UR),
             Line(**kwargs).set_length(length).rotate(
-                about_point=Line().set_length(0.2).get_end(), angle=-1**(int(not rotate)) * PI / 4).shift(0.02 * DR),
+                about_point=Line().set_length(0.2).get_end(), angle=pow(-1, int(not rotate)) * PI / 4).shift(0.02 * DR),
         )
         return VGroup(*[elem.copy() for i in range(n)]).arrange(buff=buff, direction=RIGHT).move_to(
         self.get_center()).rotate(about_point=self.get_center(), angle=self.get_angle()).set_z_index(1)

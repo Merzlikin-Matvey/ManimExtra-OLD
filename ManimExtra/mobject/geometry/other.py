@@ -2,13 +2,16 @@ from __future__ import annotations
 
 import numpy as np
 from .arc import Dot, Circle
-from .line import Line, Angle
+from .line import Line, Angle, Bisector
+from .intersection import intersection_lines
+from ...constants import PI
 
 
 __all__ = [
     "InscribedCircle",
+    "ExscribedCircle",
     "CircumscribedCircle",
-    "NinePointCircle",
+    "EulerCircle",
     "RadicalAxis",
 ]
 
@@ -21,6 +24,14 @@ class InscribedCircle(Circle):
         I = np.array([x,y,A[2]])
         super().__init__(radius=Line(A,B).get_distance(I),arc_center=I, **kwargs)
 
+class ExscribedCircle(Circle):
+    def __init__(self, A: np.ndarray, B: np.ndarray,C: np.ndarray, **kwargs):
+        biss_1 = Bisector(A, B, C)
+        biss_2 = Bisector(A, C, B).rotate(about_point=C, angle=PI/2)
+        I = intersection_lines(biss_1, biss_2)
+        r = Line(I, Line(A, C).get_projection(I)).get_length()
+        super().__init__(radius=r, arc_center=I)
+
 class CircumscribedCircle(Circle):
 
     def __init__(self, A: np.ndarray, B: np.ndarray,C: np.ndarray, **kwargs):
@@ -29,7 +40,7 @@ class CircumscribedCircle(Circle):
         super().__init__(radius=r,arc_center=o, **kwargs)
 
 
-class NinePointCircle(CircumscribedCircle):
+class EulerCircle(CircumscribedCircle):
 
     def __init__(self, A: np.ndarray, B: np.ndarray,C: np.ndarray, **kwargs):
         M1 = Line(A, B).point_from_proportion(0.5)
@@ -50,6 +61,6 @@ class RadicalAxis(Line):
         if x1 != x2:
             y0 = y1
             x0 = (x2**2 - x1**2 + 2*y0*y1 - 2*y0*y2 + y2**2 - y1**2 + r1**2 - r2**2)
-            super.__init__()
+        pass
 
 

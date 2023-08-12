@@ -192,7 +192,11 @@ class Line(TipableVMobject):
     def set_length_about_point(self, dot, length):
         A = dot+np.array([length,0,0])
         line = Line(dot,A).rotate(about_point=dot,angle=self.get_angle())
-        return self.put_start_and_end_on(line.get_start(),line.get_end())
+        self.put_start_and_end_on(line.get_start(),line.get_end())
+        return self
+
+    def multiply_length(self, k):
+        self.set_length(self.get_length()*k)
 
     def get_distance(self, dot: np.ndarray):
         return Line(dot,self.get_projection(dot)).get_length()
@@ -202,16 +206,15 @@ class Line(TipableVMobject):
             about_point=Line(**kwargs).set_length(length).get_center(), angle=PI/2)for i in range(n)]).arrange(
             buff=0.1, direction=RIGHT).move_to(self.get_center()).rotate(about_point=self.get_center(),angle=self.get_angle()).set_z_index(1)
 
-
     def paral(self, n=1, buff=0.08, length=0.15, rotate=False, **kwargs):
         elem = VGroup(
-            Line(**kwargs).set_length(length).rotate(
-                about_point=Line().set_length(0.2).get_end(), angle=pow(-1, int(rotate)) * PI / 4).shift(0.02 * UR),
-            Line(**kwargs).set_length(length).rotate(
-                about_point=Line().set_length(0.2).get_end(), angle=pow(-1, int(not rotate)) * PI / 4).shift(0.02 * DR),
-        )
+            Line(**kwargs).set_length(length).rotate(about_point=Line().set_length(0.2).get_end(), angle=PI / 4).shift(
+                0.02 * UR),
+            Line(**kwargs).set_length(length).rotate(about_point=Line().set_length(0.2).get_end(), angle=-PI / 4).shift(
+                0.02 * DR),
+        ).rotate(int(rotate) * PI)
         return VGroup(*[elem.copy() for i in range(n)]).arrange(buff=buff, direction=RIGHT).move_to(
-        self.get_center()).rotate(about_point=self.get_center(), angle=self.get_angle()).set_z_index(1)
+            self.get_center()).rotate(about_point=self.get_center(), angle=self.get_angle()).set_z_index(1)
 
 
 class DashedLine(Line):

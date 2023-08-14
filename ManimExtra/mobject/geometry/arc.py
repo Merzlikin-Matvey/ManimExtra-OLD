@@ -62,7 +62,8 @@ from ManimExtra.utils.space_ops import (
     perpendicular_bisector,
     rotate_vector,
 )
-from .line import Line
+
+
 
 if TYPE_CHECKING:
     from ManimExtra.mobject.mobject import Mobject
@@ -673,6 +674,9 @@ class Dot(Circle):
             color=color,
             **kwargs,
         )
+
+
+
 
 
 class AnnotationDot(Dot):

@@ -32,17 +32,20 @@ def intersection_circles(circle_1: Circle, circle_2: Circle):
     r1 = circle_1.radius
     r2 = circle_2.radius
     l = Line(o1,o2).get_length()
-    print(l,r1,r2)
-    if l > r1+r2:
+
+    if l > r1+r2+0.02:
         raise Exception('Circles do not intersect')
 
     x1 = Dot(Line(o1,o2).set_length_about_point(o1,r1).get_end())
     x2 = x1.copy()
 
+    if abs(1 - (r2**2 - r1**2 - l**2)/(-2*r1*l)) < 0.001:
+        return [x1.get_center(), x2.get_center()]
+
     alpha = np.arccos((r2**2 - r1**2 - l**2)/(-2*r1*l))
     x1.rotate(about_point=o1, angle=alpha)
     x2.rotate(about_point=o1, angle=-alpha)
-    print([x1.get_center(), x2.get_center()])
+
     return [x1.get_center(), x2.get_center()]
 
 

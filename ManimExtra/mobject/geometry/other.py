@@ -30,7 +30,7 @@ class ExscribedCircle(Circle):
         biss_2 = Bisector(A, C, B).rotate(about_point=C, angle=PI/2)
         I = intersection_lines(biss_1, biss_2)
         r = Line(I, Line(A, C).get_projection(I)).get_length()
-        super().__init__(radius=r, arc_center=I)
+        super().__init__(radius=r, arc_center=I, **kwargs)
 
 class CircumscribedCircle(Circle):
 

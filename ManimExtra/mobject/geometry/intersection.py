@@ -12,18 +12,16 @@ __all__ = [
 ]
 
 def intersection_lines(line_1: Line,line_2: Line):
-    k1 = line_1.get_slope()
-    k2 = line_2.get_slope()
+    x1, y1 = line_1.get_start()[0], line_1.get_start()[1],
+    x2, y2 = line_1.get_end()[0], line_1.get_end()[1],
+    x3, y3 = line_2.get_start()[0], line_2.get_start()[1],
+    x4, y4 = line_2.get_end()[0], line_2.get_end()[1],
 
-    b1 = line_1.start[1] - k1 * line_1.start[0]
-    b2 = line_2.start[1] - k2 * line_2.start[0]
-
-    if k1-k2 == 0:
-        raise Exception('Lines are parallel')
-    x = (b2-b1)/(k1-k2)
-    y = k1*x+b1
-    return np.array([x,y,line_1.start[-1]])
-
+    x0 = ((x1 * y2 - y1 * x2) * (x3 - x4) - (x1 - x2) * (x3 * y4 - y3 * x4)) / (
+                (x1 - x2) * (y3 - y4) - (y1 - y2) * (x3 - x4))
+    y0 = ((x1 * y2 - y1 * x2) * (y3 - y4) - (y1 - y2) * (x3 * y4 - y3 * x4)) / (
+                (x1 - x2) * (y3 - y4) - (y1 - y2) * (x3 - x4))
+    return np.array([x0, y0, 1])
 
 
 def intersection_circles(circle_1: Circle, circle_2: Circle):

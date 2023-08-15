@@ -74,9 +74,22 @@ class RadicalAxis(Line):
         pass
 
 class Tangent(Line):
-    def __init__(self, circle: Circle, dot: np.ndarray, length=1, **kwargs):
-        tangent = Line(dot, circle.get_center()).move_to(dot).rotate(angle=PI/2).set_length(length)
-        super().__init__(start=tangent.get_start(), end=tangent.get_end(), **kwargs)
+    def __init__(self, circle: Circle, dot: np.ndarray, length=1, other=False, **kwargs):
+        if round(circle.pow(dot), 3) == 0:
+            tangent = Line(dot, circle.get_center()).move_to(dot).rotate(angle=PI/2).set_length(length)
+            super().__init__(start=tangent.get_start(), end=tangent.get_end(), **kwargs)
+        if round(circle.pow(dot), 3) > 0:
+            o = circle.get_center()
+            l = np.sqrt((dot[0]-o[0])**2 + (dot[1]-o[1])**2)
+            t = np.sqrt(l**2 - circle.radius**2)
+            x = Dot(Line(dot, o).set_length_about_point(dot, t).get_end())
+            alpha = np.arcsin(circle.radius/l)
+            if other:
+                A = x.copy().rotate(about_point=dot, angle=alpha)
+            else:
+                A = x.copy().rotate(about_point=dot, angle=-alpha)
+            super().__init__(dot, A.get_center(), **kwargs)
+
         
 
 class PerpendicularBisector(Line):

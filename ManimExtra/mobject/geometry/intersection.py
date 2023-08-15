@@ -3,7 +3,7 @@ from __future__ import annotations
 import numpy as np
 from .arc import Dot, Circle
 from .line import Line
-from ManimExtra.mobject.types.vectorized_mobject import VGroup
+
 
 __all__ = [
     "intersection_lines",
@@ -21,7 +21,7 @@ def intersection_lines(line_1: Line,line_2: Line):
                 (x1 - x2) * (y3 - y4) - (y1 - y2) * (x3 - x4))
     y0 = ((x1 * y2 - y1 * x2) * (y3 - y4) - (y1 - y2) * (x3 * y4 - y3 * x4)) / (
                 (x1 - x2) * (y3 - y4) - (y1 - y2) * (x3 - x4))
-    return np.array([x0, y0, 1])
+    return np.array([x0, y0, 0])
 
 
 def intersection_circles(circle_1: Circle, circle_2: Circle):
@@ -45,7 +45,7 @@ def intersection_circles(circle_1: Circle, circle_2: Circle):
 
 
 def intersection_line_and_circle(line: Line, circle: Circle):
-    o, r = circle.get_center() , circle.radius
+    o, r = circle.get_center(), circle.radius
     h = Line(line.get_projection(o),o).get_length()
     alpha = np.arccos(round(h/r, 4))
     x1 = Dot(Line(o,line.get_projection(o)).set_length_about_point(o,r).get_end())

@@ -12,10 +12,6 @@ __all__ = [
     "DoubleArrow",
     "Angle",
     "RightAngle",
-    "Cevian",
-    "Bisector",
-    "Median",
-    "Altitude"
 ]
 
 from typing import Any, Sequence
@@ -215,6 +211,12 @@ class Line(TipableVMobject):
         ).rotate(int(rotate) * PI)
         return VGroup(*[elem.copy() for i in range(n)]).arrange(buff=buff, direction=RIGHT).move_to(
             self.get_center()).rotate(about_point=self.get_center(), angle=self.get_angle()).set_z_index(1)
+
+    def is_point_in_line(self, dot: np.ndarray):
+        x1, y1 = self.get_start()[0], self.get_start()[1]
+        x2, y2 = self.get_end()[0], self.get_end()[1]
+        x3, y3 = dot[0], dot[1]
+        return round(np.linalg.det(np.array([[x1, y1, 1], [x2, y2, 1], [x3, y3, 1]])), 3) == 0
 
 
 class DashedLine(Line):
@@ -1144,52 +1146,4 @@ class RightAngle(Angle):
 
     def __init__(self, line1: Line, line2: Line, length: float | None = None, **kwargs):
         super().__init__(line1, line2, radius=length, elbow=True, **kwargs)
-
-
-class Cevian(Line):
-
-    """ A segment connecting the vertices of a triangle and a point on the opposite side
-
-    Parameters
-    ----------
-    A
-        The vertex of the triangle
-    B
-        The vertex from which the segment exits
-    C
-        The vertex of the triangle
-    alpha
-        The ratio in which a point divides the side of AC
-    """
-
-    def __init__(self, A: np.ndarray, B: np.ndarray, C: np.ndarray, alpha = 0.5, **kwargs):
-        D = Line(A,C).point_from_proportion(alpha)
-        self.dot = D
-        self.general_vertex = B
-        self.extra_vertex_1 = A
-        self.extra_vertex_2 = C
-        super().__init__(B,D, **kwargs)
-
-
-class Median(Cevian):
-    def __init__(self, A = LEFT, B = RIGHT, C = UP, **kwargs):
-        super().__init__(A, B, C, 0.5, **kwargs)
-
-class Bisector(Cevian):
-    def __init__(self, A = LEFT, B = RIGHT, C = UP,  **kwargs):
-        alpha = ((Line(A,C).get_length()*Line(A,B).get_length())/(Line(B,C).get_length()+Line(A,B).get_length()))/Line(A,C).get_length()
-        super().__init__(A, B, C, alpha, **kwargs)
-
-class Altitude(Cevian):
-
-    def __init__(self, A = LEFT, B = RIGHT, C = UP, **kwargs):
-        x = np.cos(Angle().from_three_points(B,A,C).get_value()) * Line(A,B).get_length()
-        super().__init__(A, B, C, x/Line(A,C).get_length(), **kwargs)
-
-    def angles(self, **kwargs):
-        angle_1 = Angle().from_three_points(self.general_vertex, self.dot, self.extra_vertex_1,elbow=True,**kwargs).set_z_index(-9)
-        angle_2 = Angle().from_three_points(self.general_vertex, self.dot, self.extra_vertex_2,elbow=True,**kwargs).set_z_index(-9)
-        return VGroup(angle_1,angle_2)
-
-
 

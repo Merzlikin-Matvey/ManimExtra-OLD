@@ -626,6 +626,7 @@ class Circle(Arc):
     def pow(self, dot: np.ndarray):
         return (((self.get_center()[0]-dot[0])**2 + (self.get_center()[1]-dot[1])**2) - self.radius**2)
 
+
 class Dot(Circle):
     """A circle with a very small radius.
 

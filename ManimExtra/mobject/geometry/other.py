@@ -11,7 +11,7 @@ from ManimExtra.mobject.types.vectorized_mobject import VGroup
 
 __all__ = [
     "InscribedCircle",
-    "ExscribedCircle",
+    "EscribedCircle",
     "CircumscribedCircle",
     "EulerCircle",
     "RadicalAxis",

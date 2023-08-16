@@ -75,7 +75,7 @@ class RadicalAxis(Line):
 
 class Tangent(Line):
     def __init__(self, circle: Circle, dot: np.ndarray, length=1, other=False, **kwargs):
-        if round(circle.pow(dot), 2) == 0:
+        if abs(round(circle.pow(dot), 2)) == 0:
             tangent = Line(dot, circle.get_center()).move_to(dot).rotate(angle=PI/2).set_length(length)
             super().__init__(start=tangent.get_start(), end=tangent.get_end(), **kwargs)
 

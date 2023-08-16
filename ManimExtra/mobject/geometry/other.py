@@ -96,6 +96,9 @@ class Cevian(Line):
         self.extra_vertex_2 = C
         super().__init__(B,D, **kwargs)
 
+    def get_base(self):
+        return self.dot
+
 
 class Median(Cevian):
     def __init__(self, A=LEFT, B=RIGHT, C=UP, **kwargs):
@@ -106,26 +109,34 @@ class Bisector(Cevian):
         alpha = ((Line(A,C).get_length()*Line(A,B).get_length())/(Line(B,C).get_length()+Line(A,B).get_length()))/Line(A,C).get_length()
         super().__init__(A, B, C, alpha, **kwargs)
 
-class Altitude(Cevian):
-
-    def __init__(self, A=LEFT, B=RIGHT, C=UP, **kwargs):
-        x = np.cos(Angle().from_three_points(B,A,C).get_value()) * Line(A,B).get_length()
-        super().__init__(A, B, C, x/Line(A,C).get_length(), **kwargs)
-
-    def angles(self, **kwargs):
-        angle_1 = Angle().from_three_points(self.general_vertex, self.dot, self.extra_vertex_1,elbow=True,**kwargs).set_z_index(-9)
-        angle_2 = Angle().from_three_points(self.general_vertex, self.dot, self.extra_vertex_2,elbow=True,**kwargs).set_z_index(-9)
-        return VGroup(angle_1,angle_2)
-
 
 class Perpendicular(Line):
-    def __init__(self, A: np.ndarray, B: np.ndarray, X: np.ndarray, length=1, **kwargs):
+    def __init__(self, line: Line, X: np.ndarray, **kwargs):
+        A = line.get_start()
+        B = line.get_end()
         if Line(A, B).is_point_in_line(X):
-            perpendicular = Line(A, B).rotate(angle=PI / 2).move_to(X).set_length(length)
+            perpendicular = Line(A, B).rotate(angle=PI / 2).move_to(X)
         else:
-            perpendicular = Line(X, Line(A, B).get_projection(X)).set_length_about_point(
-                Line(A, B).get_projection(X), length=length)
+            perpendicular = Line(X, Line(A, B).get_projection(X))
+
+        self.vertex = X
+        self.dot = Line(A, B).get_projection(X)
+        self.line = line
         super().__init__(perpendicular.get_start(), perpendicular.get_end(), **kwargs)
+
+    def get_base(self):
+        return self.dot
+
+    def angles(self, **kwargs):
+        angle_1 = Angle().from_three_points(self.vertex, self.dot, self.line.get_start(), elbow=True,**kwargs)
+        angle_2 = Angle().from_three_points(self.vertex, self.dot, self.line.get_end(), elbow=True,**kwargs)
+        return VGroup(angle_1, angle_2)
+
+class Altitude(Perpendicular):
+
+    def __init__(self, A=LEFT, B=RIGHT, C=UP, **kwargs):
+        super.__init__(Line(A, C), B, **kwargs)
+
 
 
 

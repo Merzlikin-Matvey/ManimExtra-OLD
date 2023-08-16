@@ -34,7 +34,7 @@ class InscribedCircle(Circle):
         I = np.array([x,y,A[2]])
         super().__init__(radius=Line(A,B).get_distance(I),arc_center=I, **kwargs)
 
-class ExscribedCircle(Circle):
+class EscribedCircle(Circle):
     def __init__(self, A: np.ndarray, B: np.ndarray,C: np.ndarray, **kwargs):
         biss_1 = Bisector(A, B, C)
         biss_2 = Bisector(A, C, B).rotate(about_point=C, angle=PI/2)

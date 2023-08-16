@@ -66,8 +66,6 @@ class RadicalAxis(Line):
         x1, y1 = circle_1.get_center()[0], circle_1.get_center()[1]
         x2, y2 = circle_2.get_center()[0], circle_2.get_center()[1]
         r1, r2 = circle_1.radius, circle_2.radius
-
-
         if x1 != x2:
             y0 = y1
             x0 = (x2**2 - x1**2 + 2*y0*y1 - 2*y0*y2 + y2**2 - y1**2 + r1**2 - r2**2)

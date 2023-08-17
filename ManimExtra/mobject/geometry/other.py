@@ -133,7 +133,8 @@ class Perpendicular(Line):
 class Altitude(Perpendicular):
 
     def __init__(self, A=LEFT, B=RIGHT, C=UP, **kwargs):
-        super.__init__(Line(A, C), B, **kwargs)
+        line = Line(A, C)
+        super().__init__(line, B, **kwargs)
 
 
 

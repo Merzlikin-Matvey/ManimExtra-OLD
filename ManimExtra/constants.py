@@ -224,13 +224,13 @@ QUALITIES: dict[str, dict[str, str | int | None]] = {
         "flag": "l",
         "pixel_height": 480,
         "pixel_width": 854,
-        "frame_rate": 15,
+        "frame_rate": 30,
     },
     "vlow_quality": {
         "flag": "vl",
         "pixel_height": 480,
         "pixel_width": 854,
-        "frame_rate": 5,
+        "frame_rate": 20,
     },
     "example_quality": {
         "flag": None,

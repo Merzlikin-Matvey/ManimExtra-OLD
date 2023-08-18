@@ -196,6 +196,12 @@ DEGREES: float = TAU / 360
 
 # Video qualities
 QUALITIES: dict[str, dict[str, str | int | None]] = {
+    "shorts_quality": {
+        "flag": "s",
+        "pixel_height": 1920,
+        "pixel_width": 1080,
+        "frame_rate": 60,
+    },
     "fourk_quality": {
         "flag": "k",
         "pixel_height": 2160,
@@ -242,7 +248,7 @@ QUALITIES: dict[str, dict[str, str | int | None]] = {
 
 DEFAULT_QUALITY: str = "high_quality"
 
-EPILOG = "Made with <3 by Matvey Merzlikin"
+EPILOG = "Made with <3 by Manim community"
 SHIFT_VALUE = 65505
 CTRL_VALUE = 65507
 

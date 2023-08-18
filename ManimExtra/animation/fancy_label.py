@@ -24,6 +24,6 @@ def Fancy_label(text: Tex, mode='normal'):
         else:
             symbols += len(text.get_tex_string().split('$')[i]) / 1.5
 
-    time = (symbols / (7+1.5*modes.index(mode))) + 0.25
+    time = (symbols / (8.5+1.6*modes.index(mode))) + 0.25
 
     return AnimationGroup(Write(text.to_edge(UP).set_z_index(999)), run_time=time)

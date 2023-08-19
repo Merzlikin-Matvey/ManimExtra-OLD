@@ -191,9 +191,6 @@ class Line(TipableVMobject):
         self.put_start_and_end_on(line.get_start(),line.get_end())
         return self
 
-    def multiply_length(self, k):
-        self.set_length(self.get_length()*k)
-
     def get_distance(self, dot: np.ndarray):
         return Line(dot,self.get_projection(dot)).get_length()
 

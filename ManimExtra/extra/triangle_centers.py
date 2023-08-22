@@ -3,6 +3,7 @@ from .cevians_and_perpendiculars import *
 from .intersection import *
 
 from ManimExtra.mobject.geometry.line import Line
+from ManimExtra.mobject.geometry.arc import Dot
 
 
 class Incenter(Dot):
@@ -21,7 +22,7 @@ class Circumcenter(Dot):
     def __init__(self, A, B, C, **kwargs):
         A, B, C = dot_to_array(A, B, C)
         super().__init__(intersection_lines(
-            PerpendicularBisector(Line(A, B), C), PerpendicularBisector(Line(A, C), B)), **kwargs)
+            PerpendicularBisector(line=Line(A, B)), PerpendicularBisector(line=Line(A, C))), **kwargs)
 
 
 class Orthocenter(Dot):
@@ -48,4 +49,4 @@ class GergonnePoint(Dot):
         super().__init__(intersection_lines(
             Line(A, Line(B, C).get_projection(Incenter(A, B, C).get_center())),
             Line(B, Line(A, C).get_projection(Incenter(A, B, C).get_center())),
-        ))
+        ), **kwargs)

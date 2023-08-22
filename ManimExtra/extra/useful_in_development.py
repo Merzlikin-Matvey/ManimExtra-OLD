@@ -1,15 +1,16 @@
 import numpy as np
 
-from ManimExtra.mobject.geometry.arc import Dot
-
 
 def dot_to_array(*dots) -> list:
     coordinates = []
     for dot in dots:
         if isinstance(dot, np.ndarray):
             coordinates.append(dot)
-        if isinstance(dot, Dot):
-            coordinates.append(dot.get_center())
+        else:
+            try:
+                coordinates.append(dot.get_center())
+            except:
+                pass
     return coordinates
 
 

@@ -51,6 +51,7 @@ import numpy as np
 from colour import Color
 
 from ManimExtra.constants import *
+from ManimExtra.extra.useful_in_development import *
 from ManimExtra.mobject.opengl.opengl_compatibility import ConvertToOpenGL
 from ManimExtra.mobject.types.vectorized_mobject import VMobject
 from ManimExtra.utils.color import *
@@ -295,7 +296,7 @@ class Arc(TipableVMobject):
             radius = 1.0
         self.radius = radius
         self.num_components = num_components
-        self.arc_center = arc_center
+        self.arc_center = dot_to_array(arc_center)[0]
         self.start_angle = start_angle
         self.angle = angle
         self._failed_to_get_center = False

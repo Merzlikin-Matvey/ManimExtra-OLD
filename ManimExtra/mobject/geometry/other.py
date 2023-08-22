@@ -1,4 +1,4 @@
-from __future__ import annotations
+
 
 import numpy as np
 from .arc import Dot, Circle
@@ -7,22 +7,8 @@ from .intersection import intersection_lines
 from ...constants import *
 from ManimExtra.mobject.types.vectorized_mobject import VGroup
 
+'''
 
-
-__all__ = [
-    "InscribedCircle",
-    "EscribedCircle",
-    "CircumscribedCircle",
-    "EulerCircle",
-    "Tangent",
-    "PerpendicularBisector",
-    "Cevian",
-    "Bisector",
-    "Median",
-    "Altitude",
-    "Perpendicular"
-
-]
 
 class InscribedCircle(Circle):
 
@@ -90,7 +76,7 @@ class Median(Cevian):
 
 class Bisector(Cevian):
     def __init__(self, A=LEFT, B=RIGHT, C=UP,  **kwargs):
-        alpha = ((Line(A,C).get_length()*Line(A,B).get_length())/(Line(B,C).get_length()+Line(A,B).get_length()))/Line(A,C).get_length()
+        alpha = ((Line(A, C).get_length() * Line(A, B).get_length()) / (Line(B, C).get_length() + Line(A, B).get_length())) / Line(A, C).get_length()
         super().__init__(A, B, C, alpha, **kwargs)
 
 
@@ -116,6 +102,7 @@ class Perpendicular(Line):
         angle_2 = Angle().from_three_points(self.vertex, self.dot, self.line.get_end(), elbow=True,**kwargs)
         return VGroup(angle_1, angle_2)
 
+
 class Altitude(Perpendicular):
 
     def __init__(self, A=LEFT, B=RIGHT, C=UP, **kwargs):
@@ -124,5 +111,5 @@ class Altitude(Perpendicular):
 
 
 
-
+'''
 

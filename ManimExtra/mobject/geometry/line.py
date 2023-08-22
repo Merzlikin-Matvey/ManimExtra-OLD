@@ -30,10 +30,13 @@ from ManimExtra.mobject.types.vectorized_mobject import DashedVMobject, VGroup, 
 from ManimExtra.utils.color import *
 from ManimExtra.utils.color import Colors
 from ManimExtra.utils.space_ops import angle_of_vector, line_intersection, normalize
+from ManimExtra.extra.useful_in_development import *
 
 
 class Line(TipableVMobject):
-    def __init__(self, start=LEFT, end=RIGHT, buff=0, path_arc=None, **kwargs):
+    def __init__(self, start=LEFT, end=RIGHT, buff=0, path_arc=None, auto_dot_to_array=True, **kwargs):
+        if auto_dot_to_array:
+            start, end = dot_to_array(start, end)
         self.dim = 3
         self.buff = buff
         self.path_arc = path_arc
@@ -154,7 +157,7 @@ class Line(TipableVMobject):
     def get_angle(self):
         return angle_of_vector(self.get_vector())
 
-    def get_projection(self, point: Sequence[float]) -> Sequence[float]:
+    def get_projection(self, point: np.ndarray) -> np.ndarray:
         """Returns the projection of a point onto a line.
 
         Parameters
@@ -186,30 +189,33 @@ class Line(TipableVMobject):
         return self.scale(length / self.get_length())
 
     def set_length_about_point(self, dot, length):
-        A = dot+np.array([length,0,0])
-        line = Line(dot,A).rotate(about_point=dot,angle=self.get_angle())
-        self.put_start_and_end_on(line.get_start(),line.get_end())
+        A = dot + np.array([length, 0, 0])
+        line = Line(dot, A).rotate(about_point=dot, angle=self.get_angle())
+        self.put_start_and_end_on(line.get_start(), line.get_end())
         return self
 
-    def get_distance(self, dot: np.ndarray):
-        return Line(dot,self.get_projection(dot)).get_length()
+    def get_distance(self, dot):
+        dot = dot_to_array(dot)[0]
+        return Line(dot, self.get_projection(dot)).get_length()
 
-    def equal(self, n=1, buff=0.05, length=0.2, **kwargs):
+    def equal(self, n=1, buff=0.1, length=0.2, **kwargs):
         return VGroup(*[Line(**kwargs).set_length(length).rotate(
-            about_point=Line(**kwargs).set_length(length).get_center(), angle=PI/2)for i in range(n)]).arrange(
-            buff=0.1, direction=RIGHT).move_to(self.get_center()).rotate(about_point=self.get_center(),angle=self.get_angle()).set_z_index(1)
+            about_point=Line(**kwargs).set_length(length).get_center(), angle=PI/2) for i in range(n)]).arrange(
+                buff=buff, direction=RIGHT).move_to(self.get_center()).rotate(
+                    about_point=self.get_center(), angle=self.get_angle()).set_z_index(1)
 
     def paral(self, n=1, buff=0.08, length=0.15, rotate=False, **kwargs):
         elem = VGroup(
-            Line(**kwargs).set_length(length).rotate(about_point=Line().set_length(0.2).get_end(), angle=PI / 4).shift(
-                0.02 * UR),
-            Line(**kwargs).set_length(length).rotate(about_point=Line().set_length(0.2).get_end(), angle=-PI / 4).shift(
-                0.02 * DR),
+            Line(**kwargs).set_length(length).rotate(about_point=Line().set_length(0.2).get_end(),
+                                                     angle=PI / 4).shift(0.02 * UR),
+            Line(**kwargs).set_length(length).rotate(about_point=Line().set_length(0.2).get_end(),
+                                                     angle=-PI / 4).shift(0.02 * DR)
         ).rotate(int(rotate) * PI)
         return VGroup(*[elem.copy() for i in range(n)]).arrange(buff=buff, direction=RIGHT).move_to(
             self.get_center()).rotate(about_point=self.get_center(), angle=self.get_angle()).set_z_index(1)
 
-    def is_point_in_line(self, dot: np.ndarray):
+    def is_point_in_line(self, dot):
+        dot = dot_to_array(dot)[0]
         x1, y1 = self.get_start()[0], self.get_start()[1]
         x2, y2 = self.get_end()[0], self.get_end()[1]
         x3, y3 = dot[0], dot[1]

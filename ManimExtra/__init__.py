@@ -44,6 +44,7 @@ from .camera.moving_camera import *
 from .camera.multi_camera import *
 from .camera.three_d_camera import *
 from .constants import *
+from .extra.cevians_and_perpendiculars import *
 from .mobject.frame import *
 from .mobject.geometry.arc import *
 from .mobject.geometry.other import *

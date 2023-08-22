@@ -624,7 +624,7 @@ class Circle(Arc):
         return Circle(radius=radius, **kwargs).shift(center)
 
     def pow(self, dot: np.ndarray):
-        return (((self.get_center()[0]-dot[0])**2 + (self.get_center()[1]-dot[1])**2) - self.radius**2)
+        return round(((self.get_center()[0]-dot[0])**2 + (self.get_center()[1]-dot[1])**2) - self.radius**2,4)
 
 
 class Dot(Circle):

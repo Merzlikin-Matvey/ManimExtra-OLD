@@ -1,7 +1,9 @@
-from .useful_in_development import *
-from .intersection import *
-from .cevians_and_perpendiculars import *
+from __future__ import annotations
+
 from .triangle_centers import *
+from .cevians_and_perpendiculars import *
+from .intersection import *
+from .useful_in_development import *
 import numpy as np
 
 from ManimExtra.mobject.geometry.arc import Dot, Circle
@@ -11,8 +13,10 @@ __all__ = [
     "Tangent",
     "RadicalAxis",
     "Incircle",
+    "Excircle",
     "Circumcircle",
-    "NinePointCircle"
+    "NinePointCircle",
+
 ]
 
 
@@ -67,6 +71,14 @@ class Incircle(Circle):
         A, B, C = dot_to_array(A, B, C)
         I = Incenter(A, B, C)
         super().__init__(arc_center=I, radius=Line(A, B).get_distance(I), **kwargs)
+
+
+
+class Excircle(Circle):
+    def __init__(self, A, B, C, **kwargs):
+        A, B, C = dot_to_array(A, B, C)
+        J = Excenter(A, B, C)
+        super().__init__(arc_center=J, radius=Line(A, C).get_distance(J), **kwargs)
 
 
 class Circumcircle(Circle):

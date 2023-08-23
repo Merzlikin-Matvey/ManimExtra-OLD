@@ -624,8 +624,12 @@ class Circle(Arc):
         radius = np.linalg.norm(p1 - center)
         return Circle(radius=radius, **kwargs).shift(center)
 
-    def pow(self, dot: np.ndarray):
-        return round(((self.get_center()[0]-dot[0])**2 + (self.get_center()[1]-dot[1])**2) - self.radius**2,4)
+    def pow(self, dot):
+        dot = dot_to_array(dot)[0]
+        return round(((self.get_center()[0]-dot[0])**2 + (self.get_center()[1]-dot[1])**2) - self.radius**2, 4)
+
+    def is_point_in_circle(self, dot):
+        return self.pow(dot) == 0
 
 
 class Dot(Circle):

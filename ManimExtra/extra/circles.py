@@ -11,7 +11,8 @@ __all__ = [
     "Tangent",
     "RadicalAxis",
     "Incircle",
-    "Circumcircle"
+    "Circumcircle",
+    "NinePointCircle"
 ]
 
 
@@ -72,4 +73,10 @@ class Circumcircle(Circle):
     def __init__(self, A, B, C, **kwargs):
         A, B, C = dot_to_array(A, B, C)
         O = Circumcenter(A, B, C)
-        super().__init__(arc_center=O, radius=distance(O, A))
+        super().__init__(arc_center=O, radius=distance(O, A), **kwargs)
+        
+
+class NinePointCircle(Circumcircle):
+    def __init__(self, A, B, C, **kwargs):
+        A, B, C = dot_to_array(A, B, C)
+        super().__init__((A+B)/2, (B+C)/2, (A+C)/2, **kwargs)

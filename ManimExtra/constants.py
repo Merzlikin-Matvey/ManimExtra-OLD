@@ -167,7 +167,7 @@ DEFAULT_DASH_LENGTH: float = 0.05
 DEFAULT_ARROW_TIP_LENGTH: float = 0.35
 
 # Default buffers (padding)
-SMALL_BUFF: float = 0.175
+SMALL_BUFF: float = 0.05
 MED_SMALL_BUFF: float = 0.25
 MED_LARGE_BUFF: float = 0.4
 LARGE_BUFF: float = 1

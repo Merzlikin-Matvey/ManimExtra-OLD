@@ -597,7 +597,7 @@ class Circle(Arc):
 
     @staticmethod
     def from_three_points(
-        p1: Sequence[float], p2: Sequence[float], p3: Sequence[float], **kwargs
+        p1, p2, p3, auto_dot_to_array=True, **kwargs
     ):
         """Returns a circle passing through the specified
         three points.
@@ -617,6 +617,9 @@ class Circle(Arc):
                     )
                     self.add(NumberPlane(), circle, dots)
         """
+        if auto_dot_to_array:
+            p1, p2, p3 = dot_to_array(p1, p2, p3)
+
         center = line_intersection(
             perpendicular_bisector([p1, p2]),
             perpendicular_bisector([p2, p3]),

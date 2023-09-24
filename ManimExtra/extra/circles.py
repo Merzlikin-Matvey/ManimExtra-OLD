@@ -88,7 +88,9 @@ class Circumcircle(Circle):
         super().__init__(arc_center=O, radius=distance(O, A), **kwargs)
         
 
-class NinePointCircle(Circumcircle):
+class NinePointCircle(Circle):
     def __init__(self, A, B, C, **kwargs):
         A, B, C = dot_to_array(A, B, C)
-        super().__init__((A+B)/2, (B+C)/2, (A+C)/2, **kwargs)
+        O = NinePointCenter(A, B, C)
+        r = get_circumradius(A, B, C) / 2
+        super().__init__(arc_center=O, radius=r, **kwargs)

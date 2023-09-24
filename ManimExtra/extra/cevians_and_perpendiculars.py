@@ -70,8 +70,8 @@ class Median(Cevian):
 class Symmedian(Cevian):
     def __init__(self, A, B, C, **kwargs):
         A, B, C = dot_to_array(A, B, C)
-        a, b, c = Line(B, C).get_length(), Line(A, C).get_length(), Line(A, B) .get_length()
-        alpha = c**2 / (a**2+c**2)
+        a, b, c = Line(B, C).get_length(), Line(A, C).get_length(), Line(A, B).get_length()
+        alpha = c**2 / (a**2 + c**2)
         super().__init__(A, B, C, alpha=alpha, **kwargs)
 
 

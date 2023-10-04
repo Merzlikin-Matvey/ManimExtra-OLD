@@ -232,6 +232,12 @@ QUALITIES: dict[str, dict[str, str | int | None]] = {
         "pixel_width": 854,
         "frame_rate": 20,
     },
+    "preview_quality": {
+        "flag": "pr",
+        "pixel_height": 720,
+        "pixel_width": 1280,
+        "frame_rate": 30,
+    },
     "example_quality": {
         "flag": None,
         "pixel_height": 720,

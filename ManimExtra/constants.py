@@ -196,12 +196,6 @@ DEGREES: float = TAU / 360
 
 # Video qualities
 QUALITIES: dict[str, dict[str, str | int | None]] = {
-    "shorts_quality": {
-        "flag": "s",
-        "pixel_height": 1920,
-        "pixel_width": 1080,
-        "frame_rate": 60,
-    },
     "fourk_quality": {
         "flag": "k",
         "pixel_height": 2160,
@@ -224,7 +218,7 @@ QUALITIES: dict[str, dict[str, str | int | None]] = {
         "flag": "m",
         "pixel_height": 720,
         "pixel_width": 1280,
-        "frame_rate": 50,
+        "frame_rate": 45,
     },
     "low_quality": {
         "flag": "l",
@@ -240,8 +234,8 @@ QUALITIES: dict[str, dict[str, str | int | None]] = {
     },
     "example_quality": {
         "flag": None,
-        "pixel_height": 480,
-        "pixel_width": 854,
+        "pixel_height": 720,
+        "pixel_width": 1280,
         "frame_rate": 30,
     },
 }

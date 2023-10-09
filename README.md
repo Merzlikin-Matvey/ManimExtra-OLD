@@ -4,9 +4,7 @@ Manim is an animation engine for explanatory math videos. It's used to create pr
 
 > This repository is maintained by me and is not affiliated with Grant Sanderson, 3Blue1Brown or Manim Community. I wrote this version of Manim primarily for my own purposes. Most of the code was taken from the Manim Community repository
 
-## Usage
-
-Manim is an extremely versatile package. The following is an example `Scene` you can construct:
+## Examples
 
 ```python
 from ManimExtra import *
@@ -69,71 +67,6 @@ A brief description of the functions that are added to my version of the project
 ### ```Altitude```(A, B, C - np.ndarray) -> Cevian
 > The altitude of the triangle coming out of the vertex _B_
 
-
-### Example 
-```python
-from ManimExtra import * 
-
-class scene(Scene):
-    def construct(self):
-        A = Dot(2*DOWN+3*LEFT).set_z_index(10)
-        B = Dot(2*UP).set_z_index(10)
-        C = Dot(2*DOWN+4*RIGHT).set_z_index(10)
-        self.add(A,B,C)
-        
-        a = Line(B.get_center(), C.get_center(), color = BLUE)
-        b = Line(A.get_center(), C.get_center(), color = BLUE)
-        c = Line(A.get_center(), B.get_center(), color = BLUE)
-
-        self.add(a,b,c)
-
-        cevian = Cevian(A.get_center(),B.get_center(),C.get_center(),0.3,color=RED)
-        self.add(cevian, Dot(cevian.dot))
-
-        
-
-```
-
-### ```InscribedCircle```(A, B, C - np.ndarray) -> Circle
-> The inscribed circle of the triangle ABC
-
-### ```CircumscribedCircle```(A, B, C - np.ndarray) -> Circle
-> The circumscribed circle of the triangle ABC
-
-### ```NinePointCircle```(A, B, C - np.ndarray) -> CircumscribedCircle
-> Euler circle of triangle ABC
-
-```python
-from ManimExtra import * 
-
-class scene(Scene):
-    def construct(self):
-        A = Dot(DOWN+2*LEFT).set_z_index(10)
-        B = Dot(2*UP).set_z_index(10)
-        C = Dot(DOWN+3*RIGHT).set_z_index(10)
-
-        a = Line(B.get_center(),C.get_center(), color=BLUE)
-        b = Line(A.get_center(),C.get_center(), color=BLUE)
-        c = Line(B.get_center(),A.get_center(), color=BLUE)
-
-        self.add(A,B,C,a,b,c)
-        circle = InscribedCircle(A.get_center(),B.get_center(),C.get_center())
-        self.add(circle,Dot(circle.get_center()))
-
-        
-```
-
-
-***
-## Functions
-
-### ```intersection_lines```(line_1, line_2 - Line) -> Dot
-> Returns their intersection Dot
-
-### ```intersection_circles```(circle_1, circle_2 - Circle) -> VGroup(Dot)
-> Returns a VGroup of 2 Dots if they intersect, 1 point if they touch, an empty set otherwise
-
-### 
 
 ## License
 
